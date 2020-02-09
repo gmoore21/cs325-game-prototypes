@@ -1,27 +1,60 @@
-"use strict";
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 10</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
 
-function make_main_game_state( game )
+<script type="text/javascript">
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var player;
+var stars;
+var bombs;
+var platforms;
+var cursors;
+var score = 0;
+var gameOver = false;
+var scoreText;
+
+var game = new Phaser.Game(config);
+
+function preload ()
 {
-    function preload() {
-        // Load an image and call it 'logo'.
     this.load.image('sky', 'assets/sky.png');
     this.load.image('ground', 'assets/platform.png');
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
     this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
-    }
-    
-    var player;
-    var stars;
-    var bombs;
-    var platforms;
-    var cursors;
-    var score = 0;
-    var gameOver = false;
-    var scoreText;
-    
-    function create() {
-            //  A simple background for our game
+}
+
+function create ()
+{
+    //  A simple background for our game
     this.add.image(400, 300, 'sky');
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
@@ -95,10 +128,11 @@ function make_main_game_state( game )
     this.physics.add.overlap(player, stars, collectStar, null, this);
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
-    }
-    
-    function update() {
-        if (gameOver)
+}
+
+function update ()
+{
+    if (gameOver)
     {
         return;
     }
@@ -126,9 +160,6 @@ function make_main_game_state( game )
     {
         player.setVelocityY(-330);
     }
-    }
-    
-    return { "preload": preload, "create": create, "update": update };
 }
 
 function collectStar (player, star)
@@ -170,22 +201,7 @@ function hitBomb (player, bomb)
     gameOver = true;
 }
 
-window.onload = function() {
-    // You might want to start with a template that uses GameStates:
-    //     https://github.com/photonstorm/phaser/tree/v2.6.2/resources/Project%20Templates/Basic
-    
-    // You can copy-and-paste the code from any of the examples at http://examples.phaser.io here.
-    // You will need to change the fourth parameter to "new Phaser.Game()" from
-    // 'phaser-example' to 'game', which is the id of the HTML element where we
-    // want the game to go.
-    // The assets (and code) can be found at: https://github.com/photonstorm/phaser/tree/master/examples/assets
-    // You will need to change the paths you pass to "game.load.image()" or any other
-    // loading functions to reflect where you are putting the assets.
-    // All loading functions will typically all be found inside "preload()".
-    
-    var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game' );
-    
-    game.state.add( "main", make_main_game_state( game ) );
-    
-    game.state.start( "main" );
-};
+</script>
+
+</body>
+</html>
