@@ -174,7 +174,7 @@ function update ()
 
         player2.setVelocityX(-160);
 
-        player2.anims.play('left', true);
+        player2.anims.play('left2', true);
     }
     else if (cursors.right.isDown)
     {
@@ -184,7 +184,7 @@ function update ()
 
         player2.setVelocityX(160);
 
-        player2.anims.play('right', true);
+        player2.anims.play('right2', true);
     }
    // else if ((cursors2.right.isUp) || (cursors2.left.isUp))
     //{
