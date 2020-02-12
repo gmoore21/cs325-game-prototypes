@@ -171,12 +171,20 @@ function update ()
         player.setVelocityX(-160);
 
         player.anims.play('left', true);
+
+        player2.setVelocityX(-160);
+
+        player2.anims.play('left', true);
     }
     else if (cursors.right.isDown)
     {
         player.setVelocityX(160);
 
         player.anims.play('right', true);
+
+        player2.setVelocityX(160);
+
+        player2.anims.play('right', true);
     }
    // else if ((cursors2.right.isUp) || (cursors2.left.isUp))
     //{
@@ -201,9 +209,9 @@ function update ()
    // }
     else
     {
-    //    player2.setVelocityX(0);
+        player2.setVelocityX(0);
 
-     //   player2.anims.play('turn2');
+        player2.anims.play('turn2');
 
         player.setVelocityX(0);
 
