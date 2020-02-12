@@ -226,6 +226,7 @@ function update ()
     if (cursors.up.isDown && player.body.touching.down)
     {
         player.setVelocityY(-330);
+        player2.setVelocityY(-330);
     }
 
   //  if (cursors2.W.isDown && player2.body.touching.down)        // Added MYself
