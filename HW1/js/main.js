@@ -121,9 +121,9 @@ function create ()
     //  Input Events
     cursors = this.input.keyboard.createCursorKeys();
     //cursors2 = this.input.keyboard.addCapture('W,A,D'); // ADD these keys (MYself)
-    Wkey = scene.input.keyboard.addKey('W');  // Get key object
-    Akey = scene.input.keyboard.addKey('A');  // Get key object
-    Dkey = scene.input.keyboard.addKey('D');  // Get key object
+    Wkey = this.input.keyboard.addKey('W');  // Get key object
+    Akey = this.input.keyboard.addKey('A');  // Get key object
+    Dkey = this.input.keyboard.addKey('D');  // Get key object
 
     //var isDown = keyObj.isDown;
     //var isUp = keyObj.isUp;
