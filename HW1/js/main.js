@@ -115,7 +115,7 @@ function create ()
     });
 
     //  Input Events
-    //cursors = this.input.keyboard.createCursorKeys();
+    cursors = this.input.keyboard.createCursorKeys();
     //cursors2 = this.input.keyboard.addCapture('W,A,D'); // ADD these keys (MYself)
     //var keyObj = scene.input.keyboard.addKey('W');  // Get key object
     //var isDown = keyObj.isDown;
