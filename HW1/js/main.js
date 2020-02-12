@@ -199,10 +199,16 @@ function update ()
 
     //    player.anims.play('turn');
    // }
+       else
+    {
+        player.setVelocityX(0);
+
+        player2.anims.play('turn2');
+    }
 
     /////  ADDED MYself
 
-    else if (Akey.isDown)
+    if (Akey.isDown)
     {
         player2.setVelocityX(-160);
 
@@ -219,10 +225,6 @@ function update ()
         player2.setVelocityX(0);
 
         player2.anims.play('turn2');
-
-        player.setVelocityX(0);
-
-        player.anims.play('turn');
     }
 
 
@@ -233,13 +235,12 @@ function update ()
     if (cursors.up.isDown && player.body.touching.down)
     {
         player.setVelocityY(-330);
-        player2.setVelocityY(-330);
     }
 
-  //  if (cursors2.W.isDown && player2.body.touching.down)        // Added MYself
-  //  {
-   //     player2.setVelocityY(-330);
-  //  }
+    if (Wkey.isDown && player2.body.touching.down)
+    {
+        player2.setVelocityY(-330);
+    }
 }
 
 function collectStar (player, star)
