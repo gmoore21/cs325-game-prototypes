@@ -28,6 +28,7 @@ var scoreText;
 var player2;  // Added myself
 var cursors2;
 
+
 var game = new Phaser.Game(config);
 
 function preload ()
@@ -114,8 +115,11 @@ function create ()
     });
 
     //  Input Events
-    cursors = this.input.keyboard.createCursorKeys();
-    cursors2 = this.input.keyboard.addCapture('W,A,D'); // ADD these keys (MYself)
+    //cursors = this.input.keyboard.createCursorKeys();
+    //cursors2 = this.input.keyboard.addCapture('W,A,D'); // ADD these keys (MYself)
+    //var keyObj = scene.input.keyboard.addKey('W');  // Get key object
+    //var isDown = keyObj.isDown;
+    //var isUp = keyObj.isUp;
 
     //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
     stars = this.physics.add.group({
@@ -183,23 +187,23 @@ function update ()
 
     /////  ADDED MYself
 
-    else if (cursors2.A.isDown)
-    {
-        player2.setVelocityX(-160);
+   // else if (cursors2.A.isDown)
+    //{
+   //     player2.setVelocityX(-160);
 
-        player2.anims.play('left2', true);
-    }
-    else if (cursors2.D.isDown)
-    {
-        player2.setVelocityX(160);
+   //     player2.anims.play('left2', true);
+  //  }
+   // else if (cursors2.D.isDown)
+   // {
+   //     player2.setVelocityX(160);
 
-        player2.anims.play('right2', true);
-    }
+   //     player2.anims.play('right2', true);
+   // }
     else
     {
-        player2.setVelocityX(0);
+    //    player2.setVelocityX(0);
 
-        player2.anims.play('turn2');
+     //   player2.anims.play('turn2');
 
         player.setVelocityX(0);
 
@@ -216,10 +220,10 @@ function update ()
         player.setVelocityY(-330);
     }
 
-    if (cursors2.W.isDown && player2.body.touching.down)        // Added MYself
-    {
-        player2.setVelocityY(-330);
-    }
+  //  if (cursors2.W.isDown && player2.body.touching.down)        // Added MYself
+  //  {
+   //     player2.setVelocityY(-330);
+  //  }
 }
 
 function collectStar (player, star)
