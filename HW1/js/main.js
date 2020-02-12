@@ -174,12 +174,12 @@ function update ()
 
         player.anims.play('right', true);
     }
-    else if ((cursors2.right.isUp) || (cursors2.left.isUp))
-    {
-        player.setVelocityX(0);
+   // else if ((cursors2.right.isUp) || (cursors2.left.isUp))
+    //{
+    //    player.setVelocityX(0);
 
-        player.anims.play('turn');
-    }
+    //    player.anims.play('turn');
+   // }
 
     /////  ADDED MYself
 
@@ -200,6 +200,10 @@ function update ()
         player2.setVelocityX(0);
 
         player2.anims.play('turn2');
+
+        player.setVelocityX(0);
+
+        player.anims.play('turn');
     }
 
 
