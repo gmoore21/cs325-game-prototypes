@@ -26,7 +26,11 @@ var gameOver = false;
 var scoreText;
 
 var player2;  // Added myself
-var cursors2;
+var Wkey;
+var Akey;
+var Dkey;
+
+///
 
 
 var game = new Phaser.Game(config);
@@ -117,7 +121,10 @@ function create ()
     //  Input Events
     cursors = this.input.keyboard.createCursorKeys();
     //cursors2 = this.input.keyboard.addCapture('W,A,D'); // ADD these keys (MYself)
-    //var keyObj = scene.input.keyboard.addKey('W');  // Get key object
+    Wkey = scene.input.keyboard.addKey('W');  // Get key object
+    Akey = scene.input.keyboard.addKey('A');  // Get key object
+    Dkey = scene.input.keyboard.addKey('D');  // Get key object
+
     //var isDown = keyObj.isDown;
     //var isUp = keyObj.isUp;
 
@@ -186,7 +193,7 @@ function update ()
 
         player2.anims.play('right2', true);
     }
-   // else if ((cursors2.right.isUp) || (cursors2.left.isUp))
+    //else if ((cursors2.right.isUp) || (cursors2.left.isUp))
     //{
     //    player.setVelocityX(0);
 
@@ -195,18 +202,18 @@ function update ()
 
     /////  ADDED MYself
 
-   // else if (cursors2.A.isDown)
-    //{
-   //     player2.setVelocityX(-160);
+    else if (Akey.isDown)
+    {
+        player2.setVelocityX(-160);
 
-   //     player2.anims.play('left2', true);
-  //  }
-   // else if (cursors2.D.isDown)
-   // {
-   //     player2.setVelocityX(160);
+        player2.anims.play('left2', true);
+    }
+    else if (Dkey.isDown)
+    {
+        player2.setVelocityX(160);
 
-   //     player2.anims.play('right2', true);
-   // }
+        player2.anims.play('right2', true);
+    }
     else
     {
         player2.setVelocityX(0);
