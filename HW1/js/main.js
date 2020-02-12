@@ -195,7 +195,7 @@ function update ()
 
         player2.anims.play('right2', true);
     }
-    else ((cursors2.A.isUp) || (cursors2.D.isUp))
+    else
     {
         player2.setVelocityX(0);
 
