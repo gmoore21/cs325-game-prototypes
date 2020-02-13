@@ -22,8 +22,10 @@ var bombs;
 var platforms;
 var cursors;
 var score = 0;
+var score2 = 0;  // myself
 var gameOver = false;
 var scoreText;
+var scoreText2;     // myself
 
 var player2;  // Added myself
 var Wkey;
@@ -146,6 +148,7 @@ function create ()
 
     //  The score
     scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+    scoreText2 = this.add.text(100, 16, 'score: 0', { fontSize: '32px', fill: '#000' });  // Added myself
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, platforms);
@@ -161,7 +164,7 @@ function create ()
 
     /// Added myslef
 
-    this.physics.add.overlap(player2, stars, collectStar, null, this);
+    this.physics.add.overlap(player2, stars, collectStar2, null, this);
 
     this.physics.add.collider(player2, bombs, hitBomb, null, this);
 }
@@ -243,6 +246,34 @@ function collectStar (player, star)
         });
 
         var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+
+        var bomb = bombs.create(x, 16, 'bomb');
+        bomb.setBounce(1);
+        bomb.setCollideWorldBounds(true);
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        bomb.allowGravity = false;
+
+    }
+}
+
+function collectStar2 (player2, star)
+{
+    star.disableBody(true, true);
+
+    //  Add and update the score
+    score2 += 10;
+    scoreText.setText('Score: ' + score2);
+
+    if (stars.countActive(true) === 0)
+    {
+        //  A new batch of stars to collect
+        stars.children.iterate(function (child) {
+
+            child.enableBody(true, child.x, 0, true, true);
+
+        });
+
+        var x = (player2.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
         var bomb = bombs.create(x, 16, 'bomb');
         bomb.setBounce(1);
