@@ -173,10 +173,13 @@ function update ()
 {
     if (gameOver)
     {
-        // player 1 wins
+        // Player 1 wins
         if(score>score2){
            scoreText = this.add.text(150, 250, 'Player 1 wins!', { fontSize: '64px', fill: '#000' }); 
         }
+
+        // Player 2 Wins
+        // ok
         if(score<score2){
            scoreText = this.add.text(150, 250, 'Player 2 wins!', { fontSize: '64px', fill: '#000' }); 
         }
