@@ -16,26 +16,25 @@ var config = {
     }
 };
 
+// Player 1
 var player;
 var stars;
 var bombs;
 var platforms;
 var cursors;
 var score = 0;
-var score2 = 0;  // myself
 var gameOver = false;
 var scoreText;
-var scoreText2;     // myself
 
+// Player 2
 var player2;  // Added myself
+var score2 = 0;
+var scoreText2;     
 var Wkey;
 var Akey;
 var Dkey;
 var backgroundMusic;
 var GameOversound;
-
-///
-
 
 var game = new Phaser.Game(config);
 
@@ -47,8 +46,8 @@ function preload ()
     this.load.image('bomb', 'assets/bomb.png');
     this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     this.load.spritesheet('dude2', 'assets/dude2.png', { frameWidth: 32, frameHeight: 48 });  // Adding dude 2
-    this.load.audio('theme','assets/BackgroundMusic.mp3');
-    this.load.audio('theme2','assets/GameOver.mp3');
+    this.load.audio('theme','assets/BackgroundMusic.mp3');  // Add background music 
+    this.load.audio('theme2','assets/GameOver.mp3');    // Add game over sound
 }
 
 function create ()
@@ -126,13 +125,9 @@ function create ()
 
     //  Input Events
     cursors = this.input.keyboard.createCursorKeys();
-    //cursors2 = this.input.keyboard.addCapture('W,A,D'); // ADD these keys (MYself)
-    Wkey = this.input.keyboard.addKey('W');  // Get key object
-    Akey = this.input.keyboard.addKey('A');  // Get key object
-    Dkey = this.input.keyboard.addKey('D');  // Get key object
-
-    //var isDown = keyObj.isDown;
-    //var isUp = keyObj.isUp;
+    Wkey = this.input.keyboard.addKey('W');  // Get key 
+    Akey = this.input.keyboard.addKey('A');  // Get key 
+    Dkey = this.input.keyboard.addKey('D');  // Get key 
 
     //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
     stars = this.physics.add.group({
@@ -166,16 +161,17 @@ function create ()
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 
-    /// Added myslef
+    /// Added myslef for player 2
 
     this.physics.add.overlap(player2, stars, collectStar2, null, this);
 
     this.physics.add.collider(player2, bombs, hitBomb, null, this);
 
-
+    // Add background sound
     backgroundMusic = this.sound.add('theme');
     GameOversound = this.sound.add('theme2');
 
+    // play background music
     backgroundMusic.play();
 
 }
@@ -190,13 +186,12 @@ function update ()
         // Play Game Over sound
         GameOversound.play()
 
-        // Player 1 wins
+        // Player 1 wins Text
         if(score>score2){
            scoreText = this.add.text(150, 250, 'Player 1 wins!', { fontSize: '64px', fill: '#fff' }); 
         }
 
-        // Player 2 Wins
-        // ok
+        // Player 2 Wins Text
         if(score<score2){
            scoreText = this.add.text(150, 250, 'Player 2 wins!', { fontSize: '64px', fill: '#fff' }); 
         }
@@ -223,7 +218,7 @@ function update ()
         player.anims.play('turn');
     }
 
-    /////  ADDED MYself
+    //  Adding the player 2 controls
 
     if (Akey.isDown)
     {
