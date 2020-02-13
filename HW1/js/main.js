@@ -46,6 +46,7 @@ function preload ()
     this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     this.load.spritesheet('dude2', 'assets/dude2.png', { frameWidth: 32, frameHeight: 48 });  // Adding dude 2
     this.load.audio('theme','assets/BackgroundMusic.mp3');
+    this.load.audio('theme2','assets/GameOver.mp3');
 }
 
 function create ()
@@ -171,6 +172,7 @@ function create ()
 
 
     var backgroundMusic = this.sound.add('theme');
+    var GameOversound = this.sound.add('theme2');
 
     backgroundMusic.play();
 }
@@ -179,6 +181,12 @@ function update ()
 {
     if (gameOver)
     {
+        // pause background music
+        backgroundMusic.pause();
+
+        // Play Game Over sound
+        GameOversound.play()
+
         // Player 1 wins
         if(score>score2){
            scoreText = this.add.text(150, 250, 'Player 1 wins!', { fontSize: '64px', fill: '#fff' }); 
