@@ -148,7 +148,7 @@ function create ()
 
     //  The score
     scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-    scoreText2 = this.add.text(100, 16, 'score: 0', { fontSize: '32px', fill: '#000' });  // Added myself
+    scoreText2 = this.add.text(300, 16, 'score: 0', { fontSize: '32px', fill: '#000' });  // Added myself
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, platforms);
@@ -262,7 +262,7 @@ function collectStar2 (player2, star)
 
     //  Add and update the score
     score2 += 10;
-    scoreText.setText('Score: ' + score2);
+    scoreText2.setText('Score2: ' + score2);
 
     if (stars.countActive(true) === 0)
     {
