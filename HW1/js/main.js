@@ -45,6 +45,7 @@ function preload ()
     this.load.image('bomb', 'assets/bomb.png');
     this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     this.load.spritesheet('dude2', 'assets/dude2.png', { frameWidth: 32, frameHeight: 48 });  // Adding dude 2
+    this.load.audio('theme','assets/BackgroundMusic.mp3');
 }
 
 function create ()
@@ -167,6 +168,11 @@ function create ()
     this.physics.add.overlap(player2, stars, collectStar2, null, this);
 
     this.physics.add.collider(player2, bombs, hitBomb, null, this);
+
+
+    var backgroundMusic = this.sound.add('theme');
+
+    backgroundMusic.play();
 }
 
 function update ()
