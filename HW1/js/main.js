@@ -182,7 +182,7 @@ function update ()
     if (gameOver)
     {
         // pause background music
-        backgroundMusic.pause();
+        backgroundMusic.stop();
 
         // Play Game Over sound
         GameOversound.play()
