@@ -175,10 +175,10 @@ function update ()
     {
         // player 1 wins
         if(score>score2){
-           scoreText = this.add.text(200, 250, 'Player 1 wins!', { fontSize: '64px', fill: '#000' }); 
+           scoreText = this.add.text(150, 250, 'Player 1 wins!', { fontSize: '64px', fill: '#000' }); 
         }
         if(score<score2){
-           scoreText = this.add.text(200, 250, 'Player 2 wins!', { fontSize: '64px', fill: '#000' }); 
+           scoreText = this.add.text(150, 250, 'Player 2 wins!', { fontSize: '64px', fill: '#000' }); 
         }
         return;
     }
