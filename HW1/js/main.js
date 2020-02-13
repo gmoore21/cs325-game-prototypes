@@ -173,8 +173,6 @@ function create ()
     this.physics.add.collider(player2, bombs, hitBomb, null, this);
 
 
-    this.input.addDownCallback(function() { if (game.sound.context.state === ‘suspended’) { game.sound.context.resume(); } });
-
     backgroundMusic = this.sound.add('theme');
     GameOversound = this.sound.add('theme2');
 
