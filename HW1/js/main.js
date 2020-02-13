@@ -31,6 +31,8 @@ var player2;  // Added myself
 var Wkey;
 var Akey;
 var Dkey;
+var backgroundMusic;
+var GameOversound;
 
 ///
 
@@ -171,8 +173,8 @@ function create ()
     this.physics.add.collider(player2, bombs, hitBomb, null, this);
 
 
-    var backgroundMusic = this.sound.add('theme');
-    var GameOversound = this.sound.add('theme2');
+    backgroundMusic = this.sound.add('theme');
+    GameOversound = this.sound.add('theme2');
 
     backgroundMusic.play();
 }
