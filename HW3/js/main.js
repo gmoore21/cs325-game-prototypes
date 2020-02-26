@@ -45,7 +45,7 @@ class SceneB extends Phaser.Scene {
 
         this.input.once('pointerdown', function () {
 
-            this.scene.start('sceneC'); // start the second game state
+            this.scene.start('sceneC'); // start the 3rd game state
 
         }, this);
     }
@@ -66,16 +66,18 @@ class SceneC extends Phaser.Scene {
 
     preload ()
     {
-        this.load.image('mech', 'assets/pics/titan-mech.png');
+        this.load.image('EndScreen', 'assets/EndScreen.png');
     }
 
     create ()
     {
-        this.add.sprite(Phaser.Math.Between(300, 600), 300, 'mech');
+        this.EndScreen = this.add.image(400, 300, 'EndScreen');    // add image
 
-        this.input.once('pointerdown', function (event) {
+        this.input.manager.enabled = true;  // get controls enabled
 
-            this.scene.start('sceneA');
+        this.input.once('pointerdown', function () {
+
+            this.scene.start('sceneA'); // start the first game state
 
         }, this);
     }
