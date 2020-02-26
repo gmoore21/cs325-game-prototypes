@@ -34,12 +34,14 @@ class SceneB extends Phaser.Scene {
 
     preload ()
     {
-        this.load.image('background', 'assets/Background.png'); 
+        this.load.image('background', 'assets/Background.png');
+        this.load.image('table', 'assets/CenterTable.png') 
     }
 
     create ()
     {
         this.background = this.add.image(400, 300, 'background');    // add image
+        this.table = this.add.image(400, 300, 'table');
 
         this.input.manager.enabled = true;  // get controls enabled
 
