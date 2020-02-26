@@ -45,7 +45,7 @@ class SceneB extends Phaser.Scene {
 
         this.input.once('pointerdown', function () {
 
-            this.scene.start('sceneB'); // start the second game state
+            this.scene.start('sceneC'); // start the second game state
 
         }, this);
     }
