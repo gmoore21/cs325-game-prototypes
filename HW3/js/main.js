@@ -34,20 +34,16 @@ class SceneB extends Phaser.Scene {
 
     preload ()
     {
-        this.load.image('star', 'assets/star.png'); 
+        this.load.image('background', 'assets/Background.png'); 
     }
 
     create ()
     {
-        this.star = this.add.image(400, 300, 'star');    // add image
+        this.background = this.add.image(400, 300, 'background');    // add image
 
         this.input.manager.enabled = true;  // get controls enabled
 
-        this.input.once('pointerdown', function () {
-
-            this.scene.start('sceneC'); // start the 3rd game state
-
-        }, this);
+        this.input.once('pointerdown', function (){this.scene.start('sceneC'); }, this);
     }
 
     update ()
