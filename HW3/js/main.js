@@ -43,7 +43,7 @@ class SceneB extends Phaser.Scene {
     {
         this.background = this.add.image(400, 300, 'background');    // add image
         this.table = this.add.image(400, 300, 'table');
-        this.couch = this.add.image(400, 100, 'table');
+        this.couch = this.add.image(400, 125, 'couch');
 
         this.input.manager.enabled = true;  // get controls enabled
 
