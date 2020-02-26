@@ -38,6 +38,7 @@ class SceneB extends Phaser.Scene {
         this.load.image('table', 'assets/CenterTable.png');
         this.load.image('couch', 'assets/Couch.png');
         this.load.image('couch2', 'assets/Couch2.png');
+        this.load.image('bar', 'assets/Bar.png');
     }
 
     create ()
@@ -46,6 +47,7 @@ class SceneB extends Phaser.Scene {
         this.table = this.add.image(400, 300, 'table');
         this.couch = this.add.image(400, 125, 'couch');
         this.couch2 = this.add.image(200, 300, 'couch2');
+        this.bar = this.add.image(600, 550, 'bar');
 
         this.input.manager.enabled = true;  // get controls enabled
 
