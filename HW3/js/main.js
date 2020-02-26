@@ -36,7 +36,7 @@ class SceneB extends Phaser.Scene {
     {
         this.load.image('background', 'assets/Background.png');
         this.load.image('table', 'assets/CenterTable.png');
-        this.load.image('Couch', 'assets/Couch.png'); 
+        this.load.image('couch', 'assets/Couch.png'); 
     }
 
     create ()
