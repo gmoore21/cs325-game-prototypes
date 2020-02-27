@@ -5,6 +5,7 @@ var cats;
 var cursors;
 var score = 0;
 var time = 0;
+var numCat =0;
 var timeText;
 var gameOver = false;
 var scoreText;
@@ -54,6 +55,7 @@ class SceneB extends Phaser.Scene {
         this.load.image('bar', 'assets/Bar.png');
         this.load.image('TV', 'assets/TV.png');
         this.load.image('cat', 'assets/catchCat.png');
+        this.load.image('dog', 'assets/Dog.png');
 
         this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     }
@@ -100,7 +102,7 @@ class SceneB extends Phaser.Scene {
 
     //  The score
     scoreText = this.add.text(16, 16, 'Cats Caught: 0', { fontSize: '32px', fill: '#000' });
-    timeText = this.add.text(400, 16, 'Time Elapsed: 0', { fontSize: '32px', fill: '#000' });
+    //timeText = this.add.text(400, 16, 'Time Elapsed: 0', { fontSize: '32px', fill: '#000' });
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, cantWalk);
@@ -109,6 +111,11 @@ class SceneB extends Phaser.Scene {
 
     this.physics.add.collider(cats, cantWalk);
     this.physics.add.collider(player, cats, hitCat, null, this);
+
+    dogs = this.physics.add.group();
+
+    this.physics.add.collider(dogs, cantWalk);
+    this.physics.add.collider(dogs, cats, hitCat2, null, this);
 
     var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
     var y = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
@@ -174,6 +181,25 @@ class SceneB extends Phaser.Scene {
     cat9.setVelocity(Phaser.Math.Between(-200, 200), 20);
     cat9.allowGravity = false;
 
+    var dog = dogs.create(x, 16, 'dog');    // create dogs
+    dog.setBounce(1);
+    dog.setCollideWorldBounds(true);
+    dog.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    dog.allowGravity = false;
+
+    var dog1 = dogs.create(x, 16, 'dog');    // create dogs
+    dog1.setBounce(1);
+    dog1.setCollideWorldBounds(true);
+    dog1.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    dog1.allowGravity = false;
+
+    var dog2 = dogs.create(x, 16, 'dog');    // create dogs
+    dog2.setBounce(1);
+    dog2.setCollideWorldBounds(true);
+    dog2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    dog2.allowGravity = false;
+
+
 
 
 
@@ -217,8 +243,8 @@ class SceneB extends Phaser.Scene {
         player.anims.play('turn');
     }
 
-    time = this.game.time.getElapsedSeconds();
-    timeText.setText('Time Elapsed: ' + time);
+    //time = this.game.time.getElapsedSeconds();
+    //timeText.setText('Time Elapsed: ' + time);
     }
 
     //scoreText.setText('Cats Caught: ' + score);
@@ -286,8 +312,13 @@ function hitCat (player, dog)
     // put code to go to end scene
 }
 
-function highScore(){
 
+function hitCat2 (dog, cat)
+{
+
+    cat.disableBody(true,true);
+    numCat = numCat - 1;
 
 }
+
 
