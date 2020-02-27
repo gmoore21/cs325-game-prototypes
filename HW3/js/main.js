@@ -213,7 +213,7 @@ class SceneB extends Phaser.Scene {
         player.anims.play('turn');
     }
 
-    time = this.game.time.totalElapsedSeconds(), 32, 32);
+    time = this.game.time.totalElapsedSeconds();
     timeText.setText('Time Elapsed: ' + time);
     }
 
