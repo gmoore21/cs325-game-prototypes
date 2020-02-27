@@ -49,7 +49,7 @@ class SceneB extends Phaser.Scene {
     {
         this.background = this.add.image(400, 300, 'background');    // add image
 
-        cantWalk = physics.add.staticGroup();
+        cantWalk = this.physics.add.staticGroup();
 
         cantWalk.create(400, 300, 'table');
         cantWalk.create(400, 125, 'couch');
