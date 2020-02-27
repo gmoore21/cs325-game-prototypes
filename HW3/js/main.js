@@ -314,7 +314,7 @@ function hitCat (player, cat)  // dog
 
     cat.disableBody(true,true);
 
-    score += 1;
+    score = score + 1;
     scoreText.setText('Cats Caught: ' + score);
     numCat = numCat +1;
 
