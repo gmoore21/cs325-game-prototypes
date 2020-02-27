@@ -7,6 +7,7 @@ var score = 0;
 var gameOver = false;
 var scoreText;
 
+// WHY ISNT THIS WORKING
 class SceneA extends Phaser.Scene {
 
     constructor ()
