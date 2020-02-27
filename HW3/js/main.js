@@ -309,7 +309,7 @@ var config = {
 var game = new Phaser.Game(config);
 
 
-function hitCat (player, dog)
+function hitCat (player, cat)  // dog
 {
 
     dog.disableBody(true,true);
