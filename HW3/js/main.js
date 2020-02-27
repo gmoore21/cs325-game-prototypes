@@ -112,6 +112,20 @@ class SceneB extends Phaser.Scene {
     dog.setVelocity(Phaser.Math.Between(-200, 200), 20);
     dog.allowGravity = false;
 
+    var dog2 = dogs.create(0, 3, 'dog');    // create dogs
+    dog2.setBounce(1);
+    dog2.setCollideWorldBounds(true);
+    dog2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    dog2.allowGravity = false;
+
+    var dog3 = dogs.create(0, 3, 'dog');    // create dogs
+    dog3.setBounce(1);
+    dog3.setCollideWorldBounds(true);
+    dog3.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    dog3.allowGravity = false;
+
+
+
         this.input.once('pointerdown', function (){this.scene.start('sceneC'); }, this);
     }
 
