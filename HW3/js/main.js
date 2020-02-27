@@ -281,7 +281,7 @@ class SceneC extends Phaser.Scene {
 
         this.input.manager.enabled = true;  // get controls enabled
 
-        scoreText = this.add.text(400, 100, 'Your Score: '+ score, { fontSize: '64px', fill: '#fff' });
+        scoreText = this.add.text(400, 300, 'Your Score: '+ score, { fontSize: '64px', fill: '#fff' });
 
         this.input.once('pointerdown', function () {
 
