@@ -107,12 +107,12 @@ class SceneB extends Phaser.Scene {
     cats = this.physics.add.group(); //p oss this line?
 
 
-    this.physics.add.collider(cats, cantWalk)
+    //this.physics.add.collider(cats, cantWalk)
     //var cat = cats.create(100,100, 'cat');
     //cat.allowGravity = false;
     //this.physics.add.overlap(player, cats, collectCat, null, this);
 
-   this.physics.add.collider(player, cats, collectCat, null, this);
+   //this.physics.add.collider(player, cats, collectCat, null, this);
 
 
     dogs = this.physics.add.group();
@@ -252,11 +252,14 @@ function collectCat (player, cat)
 
 function hitDog (player, dog)
 {
-    this.physics.pause();
+    //this.physics.pause();
 
-    player.setTint(0xff0000);
+    //player.setTint(0xff0000);
 
-    player.anims.play('turn');
+    //player.anims.play('turn');
+
+    score += 1;
+    scoreText.setText('Cats Caught: ' + score);
 
     gameOver = true;
 
