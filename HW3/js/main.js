@@ -9,6 +9,8 @@ var numCat = 0;
 var timeText;
 var gameOver = false;
 var scoreText;
+var backgroundMusic;
+var GameOversound;
 
 // WHY ISNT THIS WORKING
 class SceneA extends Phaser.Scene {
@@ -58,8 +60,9 @@ class SceneB extends Phaser.Scene {
         this.load.image('TV', 'assets/TV.png');
         this.load.image('cat', 'assets/catchCat.png');
         this.load.image('dog', 'assets/Dog.png');
-
         this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
+        this.load.audio('theme','assets/BackgroundMusic.mp3');  // Add background music 
+        this.load.audio('theme2','assets/GameOver.mp3');    // Add game over sound
     }
 
     create ()
@@ -196,24 +199,14 @@ class SceneB extends Phaser.Scene {
     dog.setVelocity(Phaser.Math.Between(-200, 200), 20);
     dog.allowGravity = false;
 
-    /*
-    var dog1 = dogs.create(x, 16, 'dog');    // create dogs
-    dog1.setBounce(1);
-    dog1.setCollideWorldBounds(true);
-    dog1.setVelocity(Phaser.Math.Between(-200, 200), 20);
-    dog1.allowGravity = false;
+    backgroundMusic = this.sound.add('theme');
+    GameOversound = this.sound.add('theme2');
 
-    var dog2 = dogs.create(x, 16, 'dog');    // create dogs
-    dog2.setBounce(1);
-    dog2.setCollideWorldBounds(true);
-    dog2.setVelocity(Phaser.Math.Between(-200, 200), 20);
-    dog2.allowGravity = false;
-    */
+    // play background music
+    backgroundMusic.play();
 
 
-
-
-        this.input.once('pointerdown', function (){this.scene.start('sceneC'); }, this);
+        //this.input.once('pointerdown', function (){this.scene.start('sceneC'); }, this);
     }
 
     update ()
@@ -277,6 +270,11 @@ class SceneC extends Phaser.Scene {
 
     create ()
     {
+
+        //backgroundMusic.stop();
+
+        // Play Game Over sound
+        GameOversound.play()
         this.EndScreen = this.add.image(400, 300, 'EndScreen');    // add image
 
         this.input.manager.enabled = true;  // get controls enabled
