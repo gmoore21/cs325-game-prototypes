@@ -27,6 +27,8 @@ class SceneA extends Phaser.Scene {
 
 class SceneB extends Phaser.Scene {
 
+    var cantWalk;
+
     constructor ()
     {
         super({ key: 'sceneB' });
@@ -45,11 +47,20 @@ class SceneB extends Phaser.Scene {
     create ()
     {
         this.background = this.add.image(400, 300, 'background');    // add image
-        this.table = this.add.image(400, 300, 'table');
-        this.couch = this.add.image(400, 125, 'couch');
-        this.couch2 = this.add.image(200, 300, 'couch2');
-        this.bar = this.add.image(600, 550, 'bar');
-        this.TV = this.add.image(700, 300, 'TV');
+
+        cantWalk = this.physics.add.staticGroup();
+
+        cantWalk.create(400, 300, 'table');
+        cantWalk.create(400, 125, 'couch');
+        cantWalk.create(200, 300, 'couch2');
+        cantWalk.create(600, 550, 'bar');
+        cantWalk.create(700, 300, 'TV');
+
+        //this.table = this.add.image(400, 300, 'table');
+        //this.couch = this.add.image(400, 125, 'couch');
+        //this.couch2 = this.add.image(200, 300, 'couch2');
+        //this.bar = this.add.image(600, 550, 'bar');
+        //this.TV = this.add.image(700, 300, 'TV');
 
         this.input.manager.enabled = true;  // get controls enabled
 
