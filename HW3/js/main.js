@@ -258,6 +258,8 @@ function hitDog (player, dog)
 
     //player.anims.play('turn');
 
+    dog.disableBody(true,true);
+
     score += 1;
     scoreText.setText('Cats Caught: ' + score);
 
