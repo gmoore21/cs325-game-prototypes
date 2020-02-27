@@ -312,7 +312,7 @@ var game = new Phaser.Game(config);
 function hitCat (player, cat)  // dog
 {
 
-    dog.disableBody(true,true);
+    cat.disableBody(true,true);
 
     score += 1;
     scoreText.setText('Cats Caught: ' + score);
