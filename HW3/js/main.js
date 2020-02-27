@@ -40,7 +40,9 @@ class SceneA extends Phaser.Scene {
 
 class SceneB extends Phaser.Scene {
 
-
+    score = 0;
+    time = 0;
+    numCat = 0;
     constructor ()
     {
         super({ key: 'sceneB' });
