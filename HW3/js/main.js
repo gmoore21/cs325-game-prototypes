@@ -128,9 +128,10 @@ class SceneB extends Phaser.Scene {
 
     }
 
-   // else{
-    //    player.setVelocity(0);
-    //}
+   else{
+        player.setVelocityX(0);
+        player.setVelocityY(0);
+    }
 
     }
 
