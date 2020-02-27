@@ -256,3 +256,22 @@ function hitDog (player, dog)
 
     // put code to go to end scene
 }
+
+function collectCat (player, cat)
+{
+    star.disableBody(true, true);
+
+    //  Add and update the score
+    score += 1;
+    scoreText.setText('Cats Caught: ' + score);
+
+    if (cat.countActive(true) === 0)
+    {
+
+        gameOver = true;
+
+        // game over Text (You win, click to continue)
+        // win
+
+    }
+}
