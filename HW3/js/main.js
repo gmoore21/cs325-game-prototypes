@@ -49,7 +49,7 @@ class SceneB extends Phaser.Scene {
     {
         this.background = this.add.image(400, 300, 'background');    // add image
 
-        cantWalk = this.physics.add.staticGroup();
+        cantWalk = physics.add.staticGroup();
 
         cantWalk.create(400, 300, 'table');
         cantWalk.create(400, 125, 'couch');
@@ -106,6 +106,13 @@ var config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
+        physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
     backgroundColor: '#000000',
     parent: 'phaser-example',
     scene: [ SceneA, SceneB, SceneC ]
