@@ -4,6 +4,8 @@ var dogs;
 var cats;
 var cursors;
 var score = 0;
+var time = 0;
+var timeText;
 var gameOver = false;
 var scoreText;
 
@@ -98,6 +100,7 @@ class SceneB extends Phaser.Scene {
 
     //  The score
     scoreText = this.add.text(16, 16, 'Cats Caught: 0', { fontSize: '32px', fill: '#000' });
+    timeText = this.add.text(400, 16, 'Time Elapsed: 0', { fontSize: '32px', fill: '#000' });
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, cantWalk);
@@ -173,6 +176,7 @@ class SceneB extends Phaser.Scene {
 
 
 
+
         this.input.once('pointerdown', function (){this.scene.start('sceneC'); }, this);
     }
 
@@ -211,6 +215,10 @@ class SceneB extends Phaser.Scene {
 
     }
 
+    scoreText.setText('Cats Caught: ' + score);
+
+    time = this.game.time.totalElapsedSeconds(), 32, 32);
+    timeText.setText('Time Elapsed: ' + time);
 }
 
 class SceneC extends Phaser.Scene {
@@ -270,5 +278,10 @@ function hitCat (player, dog)
     gameOver = true;
 
     // put code to go to end scene
+}
+
+function highScore(){
+
+
 }
 
