@@ -69,11 +69,6 @@ class SceneB extends Phaser.Scene {
         cantWalk.create(600, 550, 'bar');
         cantWalk.create(700, 300, 'TV');
 
-        cats = this.physics.add.staticGroup();
-
-        cats.create(100,100, 'cat');
-
-        this.physics.add.overlap(player, cats, collectCat, null, this);
 
         this.input.manager.enabled = true;  // get controls enabled
 
@@ -107,6 +102,15 @@ class SceneB extends Phaser.Scene {
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, cantWalk);
+
+
+    cats = this.physics.add.group();
+    //this.physics.add.collider(cats, countActive)
+    //var cat = cats.create(100,100, 'cat');
+    //cat.allowGravity = false;
+    //this.physics.add.overlap(player, cats, collectCat, null, this);
+
+   this.physics.add.overlap(player, cats, collectCat, null, this);
 
 
     dogs = this.physics.add.group();
