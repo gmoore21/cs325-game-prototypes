@@ -51,8 +51,7 @@ class SceneB extends Phaser.Scene {
         this.load.image('couch2', 'assets/Couch2.png');
         this.load.image('bar', 'assets/Bar.png');
         this.load.image('TV', 'assets/TV.png');
-        this.load.image('dog', 'assets/catchCat.png');
-        //this.load.image('cat', 'assets/catchCat.png');
+        this.load.image('cat', 'assets/catchCat.png');
 
         this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     }
@@ -103,44 +102,32 @@ class SceneB extends Phaser.Scene {
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, cantWalk);
 
+    cats = this.physics.add.group();
 
-    cats = this.physics.add.group(); //p oss this line?
-
-
-    //this.physics.add.collider(cats, cantWalk)
-    //var cat = cats.create(100,100, 'cat');
-    //cat.allowGravity = false;
-    //this.physics.add.overlap(player, cats, collectCat, null, this);
-
-   //this.physics.add.collider(player, cats, collectCat, null, this);
-
-
-    dogs = this.physics.add.group();
-
-    this.physics.add.collider(dogs, cantWalk);
-    this.physics.add.collider(player, dogs, hitDog, null, this);
+    this.physics.add.collider(cats, cantWalk);
+    this.physics.add.collider(player, cats, hitCat, null, this);
 
     var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
     var y = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
     var z = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
-    var dog = dogs.create(x, 16, 'dog');    // create dogs
-    dog.setBounce(1);
-    dog.setCollideWorldBounds(true);
-    dog.setVelocity(Phaser.Math.Between(-200, 200), 20);
-    dog.allowGravity = false;
+    var cat = cats.create(x, 16, 'cat');    // create dogs
+    cat.setBounce(1);
+    cat.setCollideWorldBounds(true);
+    cat.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat.allowGravity = false;
 
-    var dog2 = dogs.create(y, 16, 'dog');    // create dogs
-    dog2.setBounce(1);
-    dog2.setCollideWorldBounds(true);
-    dog2.setVelocity(Phaser.Math.Between(-200, 200), 20);
-    dog2.allowGravity = false;
+    var cat2 = cats.create(y, 16, 'cat');    // create dogs
+    cat2.setBounce(1);
+    cat2.setCollideWorldBounds(true);
+    cat2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat2.allowGravity = false;
 
-    var dog3 = dogs.create(z, 16, 'dog');    // create dogs
-    dog3.setBounce(1);
-    dog3.setCollideWorldBounds(true);
-    dog3.setVelocity(Phaser.Math.Between(-200, 200), 20);
-    dog3.allowGravity = false;
+    var cat3 = cats.create(z, 16, 'cat');    // create dogs
+    cat3.setBounce(1);
+    cat3.setCollideWorldBounds(true);
+    cat3.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat3.allowGravity = false;
 
 
 
@@ -230,13 +217,8 @@ var config = {
 var game = new Phaser.Game(config);
 
 
-function hitDog (player, dog)
+function hitCat (player, dog)
 {
-    //this.physics.pause();
-
-    //player.setTint(0xff0000);
-
-    //player.anims.play('turn');
 
     dog.disableBody(true,true);
 
