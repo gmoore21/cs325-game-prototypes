@@ -281,6 +281,8 @@ class SceneC extends Phaser.Scene {
 
         this.input.manager.enabled = true;  // get controls enabled
 
+        scoreText = this.add.text(150, 250, 'Score: '+ score, { fontSize: '64px', fill: '#fff' });
+
         this.input.once('pointerdown', function () {
 
             this.scene.start('sceneA'); // start the first game state
