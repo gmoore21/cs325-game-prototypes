@@ -49,7 +49,7 @@ class SceneB extends Phaser.Scene {
         this.load.image('couch2', 'assets/Couch2.png');
         this.load.image('bar', 'assets/Bar.png');
         this.load.image('TV', 'assets/TV.png');
-        this.load.image('dogs', 'assets/bomb.png');
+        this.load.image('dog', 'assets/Dog.png');
 
         this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     }
