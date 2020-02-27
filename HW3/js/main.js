@@ -184,6 +184,12 @@ class SceneB extends Phaser.Scene {
     cat9.setVelocity(Phaser.Math.Between(-200, 200), 20);
     cat9.allowGravity = false;
 
+    var cat10 = cats.create(z, 16, 'cat');    // create dogs
+    cat10.setBounce(1);
+    cat10.setCollideWorldBounds(true);
+    cat10.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat10.allowGravity = false;
+
     var dog = dogs.create(x, 16, 'dog');    // create dogs
     dog.setBounce(1);
     dog.setCollideWorldBounds(true);
