@@ -274,7 +274,7 @@ class SceneC extends Phaser.Scene {
         //backgroundMusic.stop();
 
         // Play Game Over sound
-        GameOversound.play()
+        //GameOversound.play()
         this.EndScreen = this.add.image(400, 300, 'EndScreen');    // add image
 
         this.input.manager.enabled = true;  // get controls enabled
