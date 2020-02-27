@@ -1,3 +1,5 @@
+var cantWalk;
+
 class SceneA extends Phaser.Scene {
 
     constructor ()
@@ -27,7 +29,6 @@ class SceneA extends Phaser.Scene {
 
 class SceneB extends Phaser.Scene {
 
-    var cantWalk;
 
     constructor ()
     {
