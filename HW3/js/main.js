@@ -107,7 +107,7 @@ class SceneB extends Phaser.Scene {
     cats = this.physics.add.group(); //p oss this line?
 
 
-    /this.physics.add.collider(cats, cantWalk)
+    this.physics.add.collider(cats, cantWalk)
     //var cat = cats.create(100,100, 'cat');
     //cat.allowGravity = false;
     //this.physics.add.overlap(player, cats, collectCat, null, this);
