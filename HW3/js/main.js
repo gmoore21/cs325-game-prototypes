@@ -49,6 +49,8 @@ class SceneB extends Phaser.Scene {
         this.load.image('couch2', 'assets/Couch2.png');
         this.load.image('bar', 'assets/Bar.png');
         this.load.image('TV', 'assets/TV.png');
+
+        this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     }
 
     create ()
@@ -94,7 +96,7 @@ class SceneB extends Phaser.Scene {
     scoreText = this.add.text(16, 16, 'Cats Caught: 0', { fontSize: '32px', fill: '#000' });
 
     //  Collide the player and the stars with the platforms
-    this.physics.add.collider(player, platforms);
+    this.physics.add.collider(player, cantWalk);
 
         this.input.once('pointerdown', function (){this.scene.start('sceneC'); }, this);
     }
