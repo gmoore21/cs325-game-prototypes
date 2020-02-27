@@ -184,6 +184,10 @@ class SceneB extends Phaser.Scene {
     {
         // enter updates here
 
+    if(score==10){
+        this.scene.start('sceneC');
+    }
+
     if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
