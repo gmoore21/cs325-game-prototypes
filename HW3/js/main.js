@@ -51,8 +51,8 @@ class SceneB extends Phaser.Scene {
         this.load.image('couch2', 'assets/Couch2.png');
         this.load.image('bar', 'assets/Bar.png');
         this.load.image('TV', 'assets/TV.png');
-        this.load.image('dog', 'assets/Dog.png');
-        this.load.image('cat', 'assets/catchCat.png');
+        this.load.image('dog', 'assets/catchCat.png');
+        //this.load.image('cat', 'assets/catchCat.png');
 
         this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     }
@@ -229,26 +229,6 @@ var config = {
 
 var game = new Phaser.Game(config);
 
-/*
-function collectCat (player, cat)
-{
-    star.disableBody(true, true);
-
-    //  Add and update the score
-    score += 1;
-    scoreText.setText('Cats Caught: ' + score);
-
-    if (cat.countActive(true) === 0)
-    {
-
-        gameOver = true;
-
-        // game over Text (You win, click to continue)
-        // win
-
-    }
-}
-*/
 
 function hitDog (player, dog)
 {
@@ -268,21 +248,3 @@ function hitDog (player, dog)
     // put code to go to end scene
 }
 
-function collectCat (player, cat)
-{
-    star.disableBody(true, true);
-
-    //  Add and update the score
-    score += 1;
-    scoreText.setText('Cats Caught: ' + score);
-
-    if (cat.countActive(true) === 0)
-    {
-
-        gameOver = true;
-
-        // game over Text (You win, click to continue)
-        // win
-
-    }
-}
