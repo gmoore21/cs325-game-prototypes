@@ -236,6 +236,7 @@ function collectCat (player, cat)
         gameOver = true;
 
         // game over Text (You win, click to continue)
+        // win
 
     }
 }
