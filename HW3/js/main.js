@@ -5,7 +5,7 @@ var cats;
 var cursors;
 var score = 0;
 var time = 0;
-var numCat =0;
+var numCat = 0;
 var timeText;
 var gameOver = false;
 var scoreText;
@@ -116,6 +116,7 @@ class SceneB extends Phaser.Scene {
 
     this.physics.add.collider(dogs, cantWalk);
     this.physics.add.collider(dogs, cats, hitCat2, null, this);
+    this.physics.add.collider(dogs, player, dead, null, this);
 
     var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
     var y = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
@@ -187,6 +188,7 @@ class SceneB extends Phaser.Scene {
     dog.setVelocity(Phaser.Math.Between(-200, 200), 20);
     dog.allowGravity = false;
 
+    /*
     var dog1 = dogs.create(x, 16, 'dog');    // create dogs
     dog1.setBounce(1);
     dog1.setCollideWorldBounds(true);
@@ -198,7 +200,7 @@ class SceneB extends Phaser.Scene {
     dog2.setCollideWorldBounds(true);
     dog2.setVelocity(Phaser.Math.Between(-200, 200), 20);
     dog2.allowGravity = false;
-
+    */
 
 
 
@@ -210,7 +212,7 @@ class SceneB extends Phaser.Scene {
     {
         // enter updates here
 
-    if(score==10){
+    if((score==10)||(numCat == 10)){
         this.scene.start('sceneC');
     }
 
@@ -306,6 +308,7 @@ function hitCat (player, dog)
 
     score += 1;
     scoreText.setText('Cats Caught: ' + score);
+    numCat = numCat +1;
 
     gameOver = true;
 
@@ -317,8 +320,16 @@ function hitCat2 (dog, cat)
 {
 
     cat.disableBody(true,true);
-    numCat = numCat - 1;
+    numCat = numCat + 1;
 
 }
 
+function dead (dog, player){
+
+    this.physics.pause();
+
+    player.setTint(0xff0000);
+
+    player.anims.play('turn');
+}
 
