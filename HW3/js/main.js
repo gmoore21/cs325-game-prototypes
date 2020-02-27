@@ -129,6 +129,48 @@ class SceneB extends Phaser.Scene {
     cat3.setVelocity(Phaser.Math.Between(-200, 200), 20);
     cat3.allowGravity = false;
 
+    var cat4 = cats.create(x, 16, 'cat');    // create dogs
+    cat4.setBounce(1);
+    cat4.setCollideWorldBounds(true);
+    cat4.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat4.allowGravity = false;
+
+    var cat5 = cats.create(y, 16, 'cat');    // create dogs
+    cat5.setBounce(1);
+    cat5.setCollideWorldBounds(true);
+    cat5.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat5.allowGravity = false;
+
+    var cat6 = cats.create(z, 16, 'cat');    // create dogs
+    cat6.setBounce(1);
+    cat6.setCollideWorldBounds(true);
+    cat6.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat6.allowGravity = false;
+
+    var cat7 = cats.create(z, 16, 'cat');    // create dogs
+    cat7.setBounce(1);
+    cat7.setCollideWorldBounds(true);
+    cat7.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat7.allowGravity = false;
+
+    var cat7 = cats.create(x, 16, 'cat');    // create dogs
+    cat7.setBounce(1);
+    cat7.setCollideWorldBounds(true);
+    cat7.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat7.allowGravity = false;
+
+    var cat8 = cats.create(y, 16, 'cat');    // create dogs
+    cat8.setBounce(1);
+    cat8.setCollideWorldBounds(true);
+    cat8.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat8.allowGravity = false;
+
+    var cat9 = cats.create(z, 16, 'cat');    // create dogs
+    cat9.setBounce(1);
+    cat9.setCollideWorldBounds(true);
+    cat9.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    cat9.allowGravity = false;
+
 
 
         this.input.once('pointerdown', function (){this.scene.start('sceneC'); }, this);
