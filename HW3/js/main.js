@@ -1,6 +1,7 @@
 var cantWalk;
 var player;
 var dogs;
+var cats;
 var cursors;
 var score = 0;
 var gameOver = false;
@@ -50,6 +51,7 @@ class SceneB extends Phaser.Scene {
         this.load.image('bar', 'assets/Bar.png');
         this.load.image('TV', 'assets/TV.png');
         this.load.image('dog', 'assets/Dog.png');
+        this.load.image('cat', 'assets/catchCat.png');
 
         this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     }
@@ -66,9 +68,15 @@ class SceneB extends Phaser.Scene {
         cantWalk.create(600, 550, 'bar');
         cantWalk.create(700, 300, 'TV');
 
+        cats = this.physics.add.staticGroup();
+
+        cats.create(100,100, 'cat');
+
+        this.physics.add.overlap(player, cats, collectCat, null, this);
+
         this.input.manager.enabled = true;  // get controls enabled
 
-             player = this.physics.add.sprite(100, 450, 'dude1');
+        player = this.physics.add.sprite(100, 450, 'dude1');
         player.setCollideWorldBounds(true);
 
         this.anims.create({
