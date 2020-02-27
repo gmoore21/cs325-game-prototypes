@@ -213,12 +213,14 @@ class SceneB extends Phaser.Scene {
         player.anims.play('turn');
     }
 
+    time = this.game.time.totalElapsedSeconds(), 32, 32);
+    timeText.setText('Time Elapsed: ' + time);
     }
 
     scoreText.setText('Cats Caught: ' + score);
 
-    time = this.game.time.totalElapsedSeconds(), 32, 32);
-    timeText.setText('Time Elapsed: ' + time);
+    //time = this.game.time.totalElapsedSeconds(), 32, 32);
+    //timeText.setText('Time Elapsed: ' + time);
 }
 
 class SceneC extends Phaser.Scene {
