@@ -105,20 +105,23 @@ class SceneB extends Phaser.Scene {
     this.physics.add.collider(dogs, cantWalk);
     this.physics.add.collider(player, dogs, hitDog, null, this);
 
+    var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+    var y = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+    var z = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
-    var dog = dogs.create(0, 3, 'dog');    // create dogs
+    var dog = dogs.create(x, 16, 'dog');    // create dogs
     dog.setBounce(1);
     dog.setCollideWorldBounds(true);
     dog.setVelocity(Phaser.Math.Between(-200, 200), 20);
     dog.allowGravity = false;
 
-    var dog2 = dogs.create(0, 3, 'dog');    // create dogs
+    var dog2 = dogs.create(y, 16, 'dog');    // create dogs
     dog2.setBounce(1);
     dog2.setCollideWorldBounds(true);
     dog2.setVelocity(Phaser.Math.Between(-200, 200), 20);
     dog2.allowGravity = false;
 
-    var dog3 = dogs.create(0, 3, 'dog');    // create dogs
+    var dog3 = dogs.create(z, 16, 'dog');    // create dogs
     dog3.setBounce(1);
     dog3.setCollideWorldBounds(true);
     dog3.setVelocity(Phaser.Math.Between(-200, 200), 20);
