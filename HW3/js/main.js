@@ -176,7 +176,7 @@ class SceneB extends Phaser.Scene {
 
     }
 
-    function collectCat (player, cats)
+    collectCat (player, cat)
 {
     star.disableBody(true, true);
 
@@ -195,7 +195,7 @@ class SceneB extends Phaser.Scene {
     }
 }
 
-function hitDog (player, dog)
+    hitDog (player, dog)
 {
     this.physics.pause();
 
@@ -207,6 +207,8 @@ function hitDog (player, dog)
 
     // put code to go to end scene
 }
+
+
 
 
 }
@@ -255,3 +257,4 @@ var config = {
 };
 
 var game = new Phaser.Game(config);
+
