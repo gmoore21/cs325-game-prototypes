@@ -1,4 +1,10 @@
 var cantWalk;
+var player;
+var dog;
+var cursors;
+var score = 0;
+var gameOver = false;
+var scoreText;
 
 class SceneA extends Phaser.Scene {
 
@@ -57,13 +63,38 @@ class SceneB extends Phaser.Scene {
         cantWalk.create(600, 550, 'bar');
         cantWalk.create(700, 300, 'TV');
 
-        //this.table = this.add.image(400, 300, 'table');
-        //this.couch = this.add.image(400, 125, 'couch');
-        //this.couch2 = this.add.image(200, 300, 'couch2');
-        //this.bar = this.add.image(600, 550, 'bar');
-        //this.TV = this.add.image(700, 300, 'TV');
-
         this.input.manager.enabled = true;  // get controls enabled
+
+             player = this.physics.add.sprite(100, 450, 'dude1');
+        player.setCollideWorldBounds(true);
+
+        this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers('dude1', { start: 0, end: 3 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'turn',
+        frames: [ { key: 'dude1', frame: 4 } ],
+        frameRate: 20
+    });
+
+    this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNumbers('dude1', { start: 5, end: 8 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+    cursors = this.input.keyboard.createCursorKeys();
+
+    //  The score
+    scoreText = this.add.text(16, 16, 'Cats Caught: 0', { fontSize: '32px', fill: '#000' });
+
+    //  Collide the player and the stars with the platforms
+    this.physics.add.collider(player, platforms);
 
         this.input.once('pointerdown', function (){this.scene.start('sceneC'); }, this);
     }
@@ -71,6 +102,34 @@ class SceneB extends Phaser.Scene {
     update ()
     {
         // enter updates here
+
+    if (cursors.left.isDown)
+    {
+        player.setVelocityX(-160);
+
+        player.anims.play('left', true);
+    }
+    else if (cursors.right.isDown)
+    {
+        player.setVelocityX(160);
+
+        player.anims.play('right', true);
+    }
+    else if (cursors.up.isDown)
+    {
+        player.setVelocityY(-160);
+
+    }
+    else if (cursors.down.isDown)
+    {
+        player.setVelocityY(160);
+
+    }
+
+   // else{
+    //    player.setVelocity(0);
+    //}
+
     }
 
 }
