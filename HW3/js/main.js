@@ -131,6 +131,7 @@ class SceneB extends Phaser.Scene {
    else{
         player.setVelocityX(0);
         player.setVelocityY(0);
+        player.anims.play('turn');
     }
 
     }
