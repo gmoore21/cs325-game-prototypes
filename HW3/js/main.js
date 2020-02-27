@@ -1,6 +1,6 @@
 var cantWalk;
 var player;
-var dog;
+var dogs;
 var cursors;
 var score = 0;
 var gameOver = false;
@@ -49,6 +49,7 @@ class SceneB extends Phaser.Scene {
         this.load.image('couch2', 'assets/Couch2.png');
         this.load.image('bar', 'assets/Bar.png');
         this.load.image('TV', 'assets/TV.png');
+        this.load.image('dogs', 'assets/bomb.png');
 
         this.load.spritesheet('dude1', 'assets/dude1.png', { frameWidth: 32, frameHeight: 48 });
     }
@@ -97,6 +98,19 @@ class SceneB extends Phaser.Scene {
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, cantWalk);
+
+
+    dogs = this.physics.add.group();
+
+    this.physics.add.collider(dogs, cantWalk);
+    this.physics.add.collider(player, dogs, hitDog, null, this);
+
+
+    var dog = dogs.create(0, 3, 'dog');    // create dogs
+    dog.setBounce(1);
+    dog.setCollideWorldBounds(true);
+    dog.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    dog.allowGravity = false;
 
         this.input.once('pointerdown', function (){this.scene.start('sceneC'); }, this);
     }
@@ -182,3 +196,34 @@ var config = {
 };
 
 var game = new Phaser.Game(config);
+
+function collectCat (player, cat)
+{
+    star.disableBody(true, true);
+
+    //  Add and update the score
+    score += 1;
+    scoreText.setText('Cats Caught: ' + score);
+
+    if (cat.countActive(true) === 0)
+    {
+
+        gameOver = true;
+
+        // game over Text (You win, click to continue)
+
+    }
+}
+
+function hitDog (player, dog)
+{
+    this.physics.pause();
+
+    player.setTint(0xff0000);
+
+    player.anims.play('turn');
+
+    gameOver = true;
+
+    // put code to go to end scene
+}
