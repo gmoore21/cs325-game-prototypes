@@ -221,7 +221,7 @@ class SceneB extends Phaser.Scene {
     timeText.setText('Time Elapsed: ' + time);
     }
 
-    scoreText.setText('Cats Caught: ' + score);
+    //scoreText.setText('Cats Caught: ' + score);
 
     //time = this.game.time.totalElapsedSeconds(), 32, 32);
     //timeText.setText('Time Elapsed: ' + time);
