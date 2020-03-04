@@ -26,13 +26,6 @@ var score = 0;
 var gameOver = false;
 var scoreText;
 
-// Player 2
-var player2;  // Added myself
-var score2 = 0;
-var scoreText2;     
-var Wkey;
-var Akey;
-var Dkey;
 var backgroundMusic;
 var GameOversound;
 
@@ -44,7 +37,7 @@ function preload ()
     this.load.image('ground', 'assets/platform.png');
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
-    this.load.spritesheet('dude1', 'assets/Chicken.png', { frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('Chicken', 'assets/Chicken.png', { frameWidth: 48, frameHeight: 48 });
     this.load.audio('theme','assets/BackgroundMusic.mp3');  // Add background music 
     this.load.audio('theme2','assets/GameOver.mp3');    // Add game over sound
 }
@@ -159,14 +152,8 @@ function update ()
         GameOversound.play()
 
         // Player 1 wins Text
-        if(score>score2){
            scoreText = this.add.text(150, 250, 'Player 1 wins!', { fontSize: '64px', fill: '#fff' }); 
-        }
 
-        // Player 2 Wins Text
-        if(score<score2){
-           scoreText = this.add.text(150, 250, 'Player 2 wins!', { fontSize: '64px', fill: '#fff' }); 
-        }
         return;
     }
 
@@ -203,12 +190,6 @@ function update ()
         player.anims.play('idle');
     }
 
-    
-    if (cursors.up.isDown && player.body.touching.down)
-    {
-        player.setVelocityY(-330);
-    }
-
 }
 
 function collectStar (player, star)
@@ -229,34 +210,6 @@ function collectStar (player, star)
         });
 
         var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-
-        var bomb = bombs.create(x, 16, 'bomb');
-        bomb.setBounce(1);
-        bomb.setCollideWorldBounds(true);
-        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        bomb.allowGravity = false;
-
-    }
-}
-
-function collectStar2 (player2, star)
-{
-    star.disableBody(true, true);
-
-    //  Add and update the score
-    score2 += 10;
-    scoreText2.setText('Player 2: ' + score2);
-
-    if (stars.countActive(true) === 0)
-    {
-        //  A new batch of stars to collect
-        stars.children.iterate(function (child) {
-
-            child.enableBody(true, child.x, 0, true, true);
-
-        });
-
-        var x = (player2.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
         var bomb = bombs.create(x, 16, 'bomb');
         bomb.setBounce(1);
