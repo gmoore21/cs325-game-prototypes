@@ -90,7 +90,7 @@ function create ()
 
     this.anims.create({
         key: 'idle',
-        frames: [ { key: 'Chicken', frame: 2 } ],
+        frames: [ { key: 'Chicken', frame: 1 } ],
         frameRate: 20
     });
 
@@ -173,13 +173,13 @@ function update ()
 
      else if (cursors.up.isDown)
     {
-        player.setVelocityX(160);
+        player.setVelocityY(160);
 
         player.anims.play('up', true);
     }
      else if (cursors.down.isDown)
     {
-        player.setVelocityX(160);
+        player.setVelocityY(-160);
 
         player.anims.play('down', true);
     }
@@ -187,6 +187,7 @@ function update ()
     else
     {
         player.setVelocityX(0);
+        player.setVelocityY(0);
 
         player.anims.play('idle');
     }
