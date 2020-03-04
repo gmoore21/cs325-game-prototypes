@@ -65,6 +65,7 @@ function create ()
     //  Player physics properties. Give the little guy a slight bounce.
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
+    player.allowGravity = false;
 
     //  Our player animations, turning, walking left and walking right.
     this.anims.create({
@@ -173,13 +174,13 @@ function update ()
 
      else if (cursors.up.isDown)
     {
-        player.setVelocityY(160);
+        player.setVelocityY(-160);
 
         player.anims.play('up', true);
     }
      else if (cursors.down.isDown)
     {
-        player.setVelocityY(-160);
+        player.setVelocityY(160);
 
         player.anims.play('down', true);
     }
