@@ -101,6 +101,7 @@ function create ()
         repeat: -1
     });
 
+    cursors = this.input.keyboard.createCursorKeys();
 
     //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
     stars = this.physics.add.group({
