@@ -101,7 +101,7 @@ class Example extends Phaser.Scene
 
         });
 
-        this.physics.add.overlap(this.ship, stars, hitStar, null, this);
+        this.physics.add.collider(this.ship, stars, hitStar, null, this);
 
         //this.physics.add.collider(player, bombs, hitPlayer, null, this);
 
@@ -128,7 +128,7 @@ const config = {
         default: 'arcade',
         arcade: {
             debug: false,
-            gravity: { y: 100 }
+            gravity: { y: 50 }
         }
     },
     scene: Example
