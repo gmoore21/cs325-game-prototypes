@@ -70,7 +70,7 @@ class Example extends Phaser.Scene
         this.load.image('bullet', 'assets/bomb.png');
         this.load.image('ship', 'assets/ChickenGun.png');
         this.load.image('background', 'assets/Background.png'); // preload background
-        this.load.image('star', 'assets/star.png');
+        this.load.image('star', 'assets/Cow.png');
     }
 
     create ()
@@ -84,7 +84,7 @@ class Example extends Phaser.Scene
 
         stars = this.physics.add.group({
         key: 'star',
-        repeat: 11,
+        repeat: 6,
         setXY: { x: 12, y: 0, stepX: 70 }
         });
 
