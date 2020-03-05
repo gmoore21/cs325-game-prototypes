@@ -78,6 +78,7 @@ class Example extends Phaser.Scene
 
         this.background = this.add.image(400, 300, 'background'); // add background
         this.bullets = new Bullets(this);
+        this.bullets.allowGravity = false;
 
         this.ship = this.add.image(400, 500, 'ship');
 
@@ -86,6 +87,7 @@ class Example extends Phaser.Scene
         repeat: 11,
         setXY: { x: 12, y: 0, stepX: 70 }
         });
+
 
         this.input.on('pointermove', (pointer) => {
 
