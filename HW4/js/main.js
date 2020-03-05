@@ -76,7 +76,6 @@ class Example extends Phaser.Scene
     create ()
     {
 
-
         this.background = this.add.image(400, 300, 'background'); // add background
         this.bullets = new Bullets(this);
 
@@ -110,11 +109,13 @@ class Example extends Phaser.Scene
     update(){
     }
 
-    hitStar(ship, star){
+
+}
+
+function hitStar(ship, star){
 
         star.disableBody(true,true);
     }
-}
 
 const config = {
     type: Phaser.AUTO,
