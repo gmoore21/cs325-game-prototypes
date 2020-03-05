@@ -78,11 +78,12 @@ class Example extends Phaser.Scene
     create ()
     {
 
-        scoreText = this.add.text(16, 16, 'Cows Killed: 0', { fontSize: '32px', fill: '#000' });
-
+    
         this.background = this.add.image(400, 300, 'background'); // add background
         this.bullets = new Bullets(this);
         this.bullets.allowGravity = false;
+
+        scoreText = this.add.text(16, 16, 'Cows Killed: 0', { fontSize: '32px', fill: '#000' });
 
         this.ship = this.add.image(400, 500, 'ship');
 
@@ -122,11 +123,11 @@ function hitStar(bullet, star){
 
         star.disableBody(true,true);
         score += 1;
-        scoreText.setText('Cows Killed: ' + score);
-
         if(score == 5){
-
             scoreText = this.add.text(150, 250, 'Eat Mor Cow!', { fontSize: '64px', fill: '#fff' });
+        }
+        else{
+            scoreText.setText('Cows Killed: ' + score);
         }
     }
 
