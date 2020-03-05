@@ -79,7 +79,7 @@ class Example extends Phaser.Scene
         this.load.audio('Cow-Moo','assets/Cow-Moo.mp3');  // Add background music 
         this.load.audio('GunSound','assets/GunSound.mp3');    // Add game over sound
 }
-    }
+    
 
     create ()
     {
