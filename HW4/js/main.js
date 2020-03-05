@@ -1,4 +1,6 @@
 var stars;
+var score = 0;
+var scoreText;
 
 class Bullet extends Phaser.Physics.Arcade.Sprite
 {
@@ -76,6 +78,8 @@ class Example extends Phaser.Scene
     create ()
     {
 
+        scoreText = this.add.text(16, 16, 'Cows Killed: 0', { fontSize: '32px', fill: '#000' });
+
         this.background = this.add.image(400, 300, 'background'); // add background
         this.bullets = new Bullets(this);
         this.bullets.allowGravity = false;
@@ -84,7 +88,7 @@ class Example extends Phaser.Scene
 
         stars = this.physics.add.group({
         key: 'star',
-        repeat: 6,
+        repeat: 5,
         setXY: { x: 0, y: 0, stepX: 133 }
         });
 
@@ -117,6 +121,13 @@ class Example extends Phaser.Scene
 function hitStar(bullet, star){
 
         star.disableBody(true,true);
+        score += 1;
+        scoreText.setText('Cows Killed: ' + score);
+
+        if(score == 5){
+
+            scoreText = this.add.text(150, 250, 'Eat Mor Cow!', { fontSize: '64px', fill: '#fff' });
+        }
     }
 
 const config = {
