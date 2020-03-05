@@ -75,16 +75,18 @@ class Example extends Phaser.Scene
 
     create ()
     {
-        stars = this.physics.add.group({
-        key: 'star',
-        repeat: 11,
-        setXY: { x: 12, y: 0, stepX: 70 }
-        });
+
 
         this.background = this.add.image(400, 300, 'background'); // add background
         this.bullets = new Bullets(this);
 
         this.ship = this.add.image(400, 500, 'ship');
+
+        stars = this.physics.add.group({
+        key: 'star',
+        repeat: 11,
+        setXY: { x: 12, y: 0, stepX: 70 }
+        });
 
         this.input.on('pointermove', (pointer) => {
 
@@ -98,7 +100,7 @@ class Example extends Phaser.Scene
 
         });
 
-        this.physics.add.overlap(ship, stars, hitStar, null, this);
+        this.physics.add.overlap(this.ship, stars, hitStar, null, this);
 
         //this.physics.add.collider(player, bombs, hitPlayer, null, this);
 
