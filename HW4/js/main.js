@@ -1,3 +1,5 @@
+var stars;
+
 class Bullet extends Phaser.Physics.Arcade.Sprite
 {
     constructor (scene, x, y)
