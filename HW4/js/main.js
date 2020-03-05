@@ -78,7 +78,8 @@ class Example extends Phaser.Scene
     create ()
     {
 
-    
+        this.score =0; 
+        
         this.background = this.add.image(400, 300, 'background'); // add background
         this.bullets = new Bullets(this);
         this.bullets.allowGravity = false;
@@ -122,7 +123,7 @@ class Example extends Phaser.Scene
 function hitStar(bullet, star){
 
         star.disableBody(true,true);
-        score += 1;
+        score = score + 1;
         if(score == 5){
             scoreText = this.add.text(150, 250, 'Eat Mor Cow!', { fontSize: '64px', fill: '#fff' });
         }
