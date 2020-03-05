@@ -3,6 +3,8 @@ var score = 0;
 var scoreText;
 var scoreText2;
 var scoreText3;
+var CowMoo;
+var GunSound;
 
 class Bullet extends Phaser.Physics.Arcade.Sprite
 {
@@ -76,7 +78,7 @@ class Example extends Phaser.Scene
         this.load.image('chicken', 'assets/ChickenGun.png');
         this.load.image('background', 'assets/Background.png'); // preload background
         this.load.image('cow', 'assets/Cow.png');
-        this.load.audio('Cow-Moo','assets/Cow-Moo.mp3');  // Add background music 
+        this.load.audio('CowMoo','assets/Cow-Moo.mp3');  // Add background music 
         this.load.audio('GunSound','assets/GunSound.mp3');    // Add game over sound
 }
     
@@ -85,7 +87,7 @@ class Example extends Phaser.Scene
     {
  
         // Add background sound
-        CowMoo = this.sound.add('Cow-Moo');
+        CowMoo = this.sound.add('CowMoo');
         GunSound = this.sound.add('GunSound');
 
     // play background music
