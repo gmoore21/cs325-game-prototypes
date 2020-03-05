@@ -1,235 +1,107 @@
-var config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 0 },
-            debug: false
+class Bullet extends Phaser.Physics.Arcade.Sprite
+{
+    constructor (scene, x, y)
+    {
+        super(scene, x, y, 'bullet');
+    }
+
+    fire (x, y)
+    {
+        this.body.reset(x, y);
+
+        this.setActive(true);
+        this.setVisible(true);
+
+        this.setVelocityY(-300);
+    }
+
+    preUpdate (time, delta)
+    {
+        super.preUpdate(time, delta);
+
+        if (this.y <= -32)
+        {
+            this.setActive(false);
+            this.setVisible(false);
         }
-    },
-    scene: {
-        preload: preload,
-        create: create,
-        update: update
     }
-};
-
-// Player 1
-var player;
-var stars;
-var bombs;
-var platforms;
-var cursors;
-var score = 0;
-var gameOver = false;
-var scoreText;
-
-var backgroundMusic;
-var GameOversound;
-
-var game = new Phaser.Game(config);
-
-function preload ()
-{
-    this.load.image('sky', 'assets/sky.png');
-    this.load.image('ground', 'assets/platform.png');
-    this.load.image('star', 'assets/star.png');
-    this.load.image('bomb', 'assets/bomb.png');
-    this.load.spritesheet('Chicken', 'assets/Chicken.png', { frameWidth: 48, frameHeight: 48 });
-    this.load.audio('theme','assets/BackgroundMusic.mp3');  // Add background music 
-    this.load.audio('theme2','assets/GameOver.mp3');    // Add game over sound
 }
 
-function create ()
+class Bullets extends Phaser.Physics.Arcade.Group
 {
-    //  A simple background for our game
-    this.add.image(400, 300, 'sky');
+    constructor (scene)
+    {
+        super(scene.physics.world, scene);
 
-    //  The platforms group contains the ground and the 2 ledges we can jump on
-    platforms = this.physics.add.staticGroup();
+        this.createMultiple({
+            frameQuantity: 5,
+            key: 'bullet',
+            active: false,
+            visible: false,
+            classType: Bullet
+        });
+    }
 
-    //  Here we create the ground.
-    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+    fireBullet (x, y)
+    {
+        let bullet = this.getFirstDead(false);
 
-    //  Now let's create some ledges
-    platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
-    platforms.create(750, 220, 'ground');
-
-    // The player and its settings
-    player = this.physics.add.sprite(100, 450, 'Chicken'); // where the chicken starts 
-
-    //  Player physics properties. Give the little guy a slight bounce.
-    player.setBounce(0.2);
-    player.setCollideWorldBounds(true);
-    player.allowGravity = false;
-
-    //  Our player animations, turning, walking left and walking right.
-    this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('Chicken', { start: 5, end: 3 }),
-        frameRate: 10,
-        repeat: -1
-    });
-
-    this.anims.create({
-        key: 'up',
-        frames: this.anims.generateFrameNumbers('Chicken', { start: 9, end: 11 }),
-        frameRate: 10,
-        repeat: -1
-    });
-
-    this.anims.create({
-        key: 'down',
-        frames: this.anims.generateFrameNumbers('Chicken', { start: 0, end: 2 }),
-        frameRate: 10,
-        repeat: -1
-    });
-
-    this.anims.create({
-        key: 'idle',
-        frames: [ { key: 'Chicken', frame: 1 } ],
-        frameRate: 20
-    });
-
-    this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNumbers('Chicken', { start: 6, end: 8 }),
-        frameRate: 10,
-        repeat: -1
-    });
-
-    cursors = this.input.keyboard.createCursorKeys();
-
-    //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
-    stars = this.physics.add.group({
-        key: 'star',
-        repeat: 11,
-        setXY: { x: 12, y: 0, stepX: 70 }
-    });
-
-    stars.children.iterate(function (child) {
-
-        //  Give each star a slightly different bounce
-        child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-
-    });
-
-    bombs = this.physics.add.group();
-
-    //  The score
-    scoreText = this.add.text(16, 16, 'Player 1: 0', { fontSize: '32px', fill: '#000' });
-
-    //  Collide the player and the stars with the platforms
-    this.physics.add.collider(player, platforms);
-    this.physics.add.collider(stars, platforms);
-    this.physics.add.collider(bombs, platforms);
-
-    //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    this.physics.add.overlap(player, stars, collectStar, null, this);
-
-    this.physics.add.collider(player, bombs, hitBomb, null, this);
-
-
-    // Add background sound
-    backgroundMusic = this.sound.add('theme');
-    GameOversound = this.sound.add('theme2');
-
-    // play background music
-    backgroundMusic.play();
-
+        if (bullet)
+        {
+            bullet.fire(x, y);
+        }
+    }
 }
 
-function update ()
+class Example extends Phaser.Scene
 {
-    if (gameOver)
+    constructor ()
     {
-        // pause background music
-        backgroundMusic.stop();
+        super();
 
-        // Play Game Over sound
-        GameOversound.play()
-
-        // Player 1 wins Text
-           scoreText = this.add.text(150, 250, 'Player 1 wins!', { fontSize: '64px', fill: '#fff' }); 
-
-        return;
+        this.bullets;
+        this.ship;
     }
 
-    if (cursors.left.isDown)
+    preload ()
     {
-        player.setVelocityX(-160);
-
-        player.anims.play('left', true);
-    }
-    else if (cursors.right.isDown)
-    {
-        player.setVelocityX(160);
-
-        player.anims.play('right', true);
+        this.load.image('bullet', 'assets/bomb.png');
+        this.load.image('ship', 'assets/ChickenGun.png');
     }
 
-     else if (cursors.up.isDown)
+    create ()
     {
-        player.setVelocityY(-160);
+        this.bullets = new Bullets(this);
 
-        player.anims.play('up', true);
-    }
-     else if (cursors.down.isDown)
-    {
-        player.setVelocityY(160);
+        this.ship = this.add.image(400, 500, 'ship');
 
-        player.anims.play('down', true);
-    }
+        this.input.on('pointermove', (pointer) => {
 
-    else
-    {
-        player.setVelocityX(0);
-        player.setVelocityY(0);
-
-        player.anims.play('idle');
-    }
-
-}
-
-function collectStar (player, star)
-{
-    star.disableBody(true, true);
-
-    //  Add and update the score
-    score += 10;
-    scoreText.setText('Player 1: ' + score);
-
-    if (stars.countActive(true) === 0)
-    {
-        //  A new batch of stars to collect
-        stars.children.iterate(function (child) {
-
-            child.enableBody(true, child.x, 0, true, true);
+            this.ship.x = pointer.x;
 
         });
 
-        var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+        this.input.on('pointerdown', (pointer) => {
 
-        var bomb = bombs.create(x, 16, 'bomb');
-        bomb.setBounce(1);
-        bomb.setCollideWorldBounds(true);
-        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        bomb.allowGravity = false;
+            this.bullets.fireBullet(this.ship.x, this.ship.y);
 
+        });
     }
 }
 
-function hitBomb (player, bomb)
-{
-    this.physics.pause();
+const config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    parent: 'phaser-example',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            debug: false,
+            gravity: { y: 0 }
+        }
+    },
+    scene: Example
+};
 
-    player.setTint(0xff0000);
-
-    player.anims.play('turn');
-
-    gameOver = true;
-}
+let game = new Phaser.Game(config);
