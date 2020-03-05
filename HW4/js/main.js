@@ -118,7 +118,7 @@ function hitStar(bullet, star){
         score = score + 1;
         if(score == 6){
             scoreText2 = this.add.text(150, 250, 'Eat Mor Cow!', { fontSize: '64px', fill: '#fff' });
-            scoreText3 = this.add.text(200, 300, 'Reload to Replay', { fontSize: '64px', fill: '#fff' });
+            scoreText3 = this.add.text(100, 300, 'Reload to Replay', { fontSize: '64px', fill: '#fff' });
         }
         else{
             scoreText.setText('Cows Killed: ' + score);
