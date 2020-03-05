@@ -101,7 +101,7 @@ class Example extends Phaser.Scene
 
         });
 
-        this.physics.add.collider(this.ship, stars, hitStar, null, this);
+        this.physics.add.collider(this.bullets, stars, hitStar, null, this);
 
         //this.physics.add.collider(player, bombs, hitPlayer, null, this);
 
@@ -114,7 +114,7 @@ class Example extends Phaser.Scene
 
 }
 
-function hitStar(ship, star){
+function hitStar(bullet, star){
 
         star.disableBody(true,true);
     }
