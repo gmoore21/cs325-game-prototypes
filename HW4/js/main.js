@@ -67,10 +67,19 @@ class Example extends Phaser.Scene
     {
         this.load.image('bullet', 'assets/bomb.png');
         this.load.image('ship', 'assets/ChickenGun.png');
+        this.load.image('background', 'assets/Background.png'); // preload background
+        this.load.image('star', 'assets/star.png');
     }
 
     create ()
     {
+        stars = this.physics.add.group({
+        key: 'star',
+        repeat: 11,
+        setXY: { x: 12, y: 0, stepX: 70 }
+        });
+
+        this.background = this.add.image(400, 300, 'background'); // add background
         this.bullets = new Bullets(this);
 
         this.ship = this.add.image(400, 500, 'ship');
@@ -86,6 +95,20 @@ class Example extends Phaser.Scene
             this.bullets.fireBullet(this.ship.x, this.ship.y);
 
         });
+
+        this.physics.add.overlap(ship, stars, hitStar, null, this);
+
+        //this.physics.add.collider(player, bombs, hitPlayer, null, this);
+
+
+    }
+
+    update(){
+    }
+
+    hitStar(ship, star){
+
+        star.disableBody(true,true);
     }
 }
 
@@ -98,7 +121,7 @@ const config = {
         default: 'arcade',
         arcade: {
             debug: false,
-            gravity: { y: 0 }
+            gravity: { y: 100 }
         }
     },
     scene: Example
