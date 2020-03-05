@@ -1,4 +1,4 @@
-var stars;
+var cows;
 var score = 0;
 var scoreText;
 var scoreText2;
@@ -66,15 +66,15 @@ class Example extends Phaser.Scene
         super();
 
         this.bullets;
-        this.ship;
+        this.chicken;
     }
 
     preload ()
     {
-        this.load.image('bullet', 'assets/bomb.png');
-        this.load.image('ship', 'assets/ChickenGun.png');
+        this.load.image('bullet', 'assets/Egg.png');
+        this.load.image('chicken', 'assets/ChickenGun.png');
         this.load.image('background', 'assets/Background.png'); // preload background
-        this.load.image('star', 'assets/Cow.png');
+        this.load.image('cow', 'assets/Cow.png');
     }
 
     create ()
@@ -86,35 +86,35 @@ class Example extends Phaser.Scene
 
         scoreText = this.add.text(16, 16, 'Cows Killed: 0', { fontSize: '32px', fill: '#000' });
 
-        this.ship = this.add.image(400, 500, 'ship');
+        this.chicken = this.add.image(400, 500, 'chicken');
 
-        stars = this.physics.add.group({
-        key: 'star',
+        cows = this.physics.add.group({
+        key: 'cow',
         repeat: 5,
         setXY: { x: 0, y: 0, stepX: 133 }
         });
 
         this.input.on('pointermove', (pointer) => {
 
-            this.ship.x = pointer.x;
+            this.chicken.x = pointer.x;
 
         });
 
         this.input.on('pointerdown', (pointer) => {
 
-            this.bullets.fireBullet(this.ship.x, this.ship.y);
+            this.bullets.fireBullet(this.chicken.x, this.chicken.y);
 
         });
 
-        this.physics.add.collider(this.bullets, stars, hitStar, null, this);
+        this.physics.add.collider(this.bullets, cows, hitCow, null, this);
 
     }
 
 }
 
-function hitStar(bullet, star){
+function hitCow(bullet, cow){
 
-        star.disableBody(true,true);
+        cow.disableBody(true,true);
         score = score + 1;
         if(score == 6){
             scoreText2 = this.add.text(150, 250, 'Eat Mor Cow!', { fontSize: '64px', fill: '#fff' });
