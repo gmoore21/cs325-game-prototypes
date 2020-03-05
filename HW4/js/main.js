@@ -90,9 +90,6 @@ class Example extends Phaser.Scene
         CowMoo = this.sound.add('CowMoo');
         GunSound = this.sound.add('GunSound');
 
-    // play background music
-        backgroundMusic.play();
-
         this.background = this.add.image(400, 300, 'background'); // add background
         this.bullets = new Bullets(this);
         this.bullets.allowGravity = false;
