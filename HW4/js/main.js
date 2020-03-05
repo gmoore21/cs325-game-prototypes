@@ -19,6 +19,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
         this.setVisible(true);
 
         this.setVelocityY(-300);
+
     }
 
     preUpdate (time, delta)
@@ -75,11 +76,21 @@ class Example extends Phaser.Scene
         this.load.image('chicken', 'assets/ChickenGun.png');
         this.load.image('background', 'assets/Background.png'); // preload background
         this.load.image('cow', 'assets/Cow.png');
+        this.load.audio('Cow-Moo','assets/Cow-Moo.mp3');  // Add background music 
+        this.load.audio('GunSound','assets/GunSound.mp3');    // Add game over sound
+}
     }
 
     create ()
     {
  
+        // Add background sound
+        CowMoo = this.sound.add('Cow-Moo');
+        GunSound = this.sound.add('GunSound');
+
+    // play background music
+        backgroundMusic.play();
+
         this.background = this.add.image(400, 300, 'background'); // add background
         this.bullets = new Bullets(this);
         this.bullets.allowGravity = false;
@@ -103,6 +114,8 @@ class Example extends Phaser.Scene
         this.input.on('pointerdown', (pointer) => {
 
             this.bullets.fireBullet(this.chicken.x, this.chicken.y);
+            GunSound.play()
+
 
         });
 
@@ -113,6 +126,8 @@ class Example extends Phaser.Scene
 }
 
 function hitCow(bullet, cow){
+
+        CowMoo.play();
 
         cow.disableBody(true,true);
         score = score + 1;
@@ -134,7 +149,7 @@ const config = {
         default: 'arcade',
         arcade: {
             debug: false,
-            gravity: { y: 100 }
+            gravity: { y: 150 }
         }
     },
     scene: Example
