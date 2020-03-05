@@ -132,7 +132,7 @@ const config = {
         default: 'arcade',
         arcade: {
             debug: false,
-            gravity: { y: 200 }
+            gravity: { y: 100 }
         }
     },
     scene: Example
