@@ -2,6 +2,7 @@ var stars;
 var score = 0;
 var scoreText;
 var scoreText2;
+var scoreText3;
 
 class Bullet extends Phaser.Physics.Arcade.Sprite
 {
