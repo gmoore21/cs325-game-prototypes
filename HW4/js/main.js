@@ -85,7 +85,7 @@ class Example extends Phaser.Scene
         stars = this.physics.add.group({
         key: 'star',
         repeat: 6,
-        setXY: { x: 12, y: 0, stepX: 150 }
+        setXY: { x: 0, y: 0, stepX: 133 }
         });
 
 
