@@ -156,6 +156,10 @@ class SceneB extends Phaser.Scene {
     background.setOrigin(0.5, 0.5).setDisplaySize(1600, 1200);
     player.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true).setDrag(500, 500);
     enemy.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    enemy2.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    enemy3.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    enemy4.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    enemy5.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
     hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
     hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
@@ -226,7 +230,6 @@ class SceneB extends Phaser.Scene {
         {
             bullet.fire(player, reticle);
             this.physics.add.collider(enemy, bullet, enemyHitCallback);
-            this.physics.add.collider(enemy1, bullet, enemyHitCallback);
             this.physics.add.collider(enemy2, bullet, enemyHitCallback);
             this.physics.add.collider(enemy3, bullet, enemyHitCallback);
             this.physics.add.collider(enemy4, bullet, enemyHitCallback);
