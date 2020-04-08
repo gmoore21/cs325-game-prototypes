@@ -68,6 +68,9 @@ class SceneB extends Phaser.Scene {
         this.load.spritesheet('player_handgun', 'assets/player_walk_strip6.png',
            { frameWidth: 35, frameHeight: 57 }
          ); // Made by tokkatrain: https://tokkatrain.itch.io/top-down-basic-set
+        this.load.spritesheet('player_handgun2', 'assets/player_walk_strip62.png',
+           { frameWidth: 35, frameHeight: 57 }
+         );
         this.load.image('bullet', 'assets/bomb.png');
         this.load.image('target', 'assets/bomb.png');
         this.load.image('background', 'assets/Background.png');
@@ -109,7 +112,7 @@ class SceneB extends Phaser.Scene {
 
 
     player = this.physics.add.sprite(800, 600, 'player_handgun');
-    enemy = this.physics.add.sprite(300, 600, 'player_handgun');
+    enemy = this.physics.add.sprite(300, 600, 'player_handgun2');
     reticle = this.physics.add.sprite(800, 700, 'target');
     hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
     hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
