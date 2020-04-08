@@ -1,12 +1,6 @@
 var cantWalk;
 var player;
-var dogs;
-var cats;
-var cursors;
 var score = 0;
-var time = 0;
-var numCat = 0;
-var timeText;
 var gameOver = false;
 var scoreText;
 var backgroundMusic;
@@ -59,6 +53,9 @@ class SceneA extends Phaser.Scene {
 }
 
 class SceneB extends Phaser.Scene {
+
+    score = 0;
+    gameOver = false;
 
     constructor ()
     {
