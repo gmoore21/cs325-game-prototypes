@@ -100,6 +100,7 @@ class SceneB extends Phaser.Scene {
     cantWalk.create(400, 125, 'couch');
     cantWalk.create(200, 300, 'couch2');
     cantWalk.create(600, 550, 'bar');
+    cantWalk.create(1000, 1000, 'bar');
     cantWalk.create(700, 300, 'TV');
     player = this.physics.add.sprite(800, 600, 'player_handgun');
     enemy = this.physics.add.sprite(300, 600, 'player_handgun');
