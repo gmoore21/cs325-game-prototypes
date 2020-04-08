@@ -77,6 +77,7 @@ class SceneB extends Phaser.Scene {
         this.load.image('couch', 'assets/Couch.png');
         this.load.image('couch2', 'assets/Couch2.png');
         this.load.image('bar', 'assets/Bar.png');
+        this.load.image('barVert', 'assets/BarVert.png');
         this.load.image('TV', 'assets/TV.png');
     }
 
@@ -96,12 +97,12 @@ class SceneB extends Phaser.Scene {
 
     // Add background player, enemy, reticle, healthpoint sprites
     var background = this.add.image(800, 600, 'background');
-    cantWalk.create(400, 300, 'table');
-    cantWalk.create(400, 125, 'couch');
-    cantWalk.create(200, 300, 'couch2');
-    cantWalk.create(600, 550, 'bar');
-    cantWalk.create(1000, 1000, 'bar');
-    cantWalk.create(700, 300, 'TV');
+
+    cantWalk.create(600, 800, 'bar');
+    cantWalk.create(775 , 975, 'barVert')
+    cantWalk.create(600, 1150, 'bar');
+
+
     player = this.physics.add.sprite(800, 600, 'player_handgun');
     enemy = this.physics.add.sprite(300, 600, 'player_handgun');
     reticle = this.physics.add.sprite(800, 700, 'target');
