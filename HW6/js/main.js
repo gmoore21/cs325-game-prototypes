@@ -102,9 +102,9 @@ class SceneB extends Phaser.Scene {
     cantWalk.create(775 , 975, 'barVert')
     cantWalk.create(600, 1150, 'bar');
 
-    cantWalk.create(800, 200, 'bar');
-    cantWalk.create(975 , 375, 'barVert')
-    cantWalk.create(800, 450, 'bar');
+    cantWalk.create(1000, 200, 'bar');
+    cantWalk.create(825 , 375, 'barVert')
+    cantWalk.create(1000, 550, 'bar');
 
 
 
