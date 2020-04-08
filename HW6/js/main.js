@@ -12,6 +12,14 @@ var scoreText;
 var backgroundMusic;
 var GameOversound;
 
+var player = null;
+var healthpoints = null;
+var reticle = null;
+var moveKeys = null;
+var playerBullets = null;
+var enemyBullets = null;
+var time = 0;
+
 
 class SceneA extends Phaser.Scene {
 
