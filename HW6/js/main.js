@@ -12,6 +12,7 @@ var scoreText;
 var backgroundMusic;
 var GameOversound;
 
+var enemys = null;
 var player = null;
 var healthpoints = null;
 var reticle = null;
