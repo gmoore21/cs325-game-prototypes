@@ -127,8 +127,8 @@ class SceneB extends Phaser.Scene {
 
     this.physics.add.collider(player, cantWalk);
     this.physics.add.collider(enemy, cantWalk);
-    this.physics.add.collider(playerBullets, cantWalk);
-    this.physics.add.collider(enemyBullets, cantWalk);
+    this.physics.add.collider(playerBullets, cantWalk, hitWall, this);
+    this.physics.add.collider(enemyBullets, cantWalk, hitWall2, this);
 
 
     // Set sprite variables
@@ -400,6 +400,20 @@ function constrainReticle(reticle)
         reticle.y = player.y-600;
 }
 
+
+function hitWall (playerBullets, cantWalk)  
+{
+
+    playerBullets.disableBody(true,true);
+
+}
+
+function hitWall2 (enemyBullets, cantWalk) 
+{
+
+    enemyBullets.disableBody(true,true);
+
+}
 
 var Bullet = new Phaser.Class({
 
