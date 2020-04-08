@@ -54,9 +54,6 @@ class SceneA extends Phaser.Scene {
 
 class SceneB extends Phaser.Scene {
 
-    score = 0;
-    time = 0;
-    numCat = 0;
     constructor ()
     {
         super({ key: 'sceneB' });
@@ -83,7 +80,7 @@ class SceneB extends Phaser.Scene {
     /////////////////////////////////////////////  new code  ///////////////////////////
 
 
-        this.physics.world.setBounds(0, 0, 1600, 1200);
+        this.physics.world.setBounds(0, 0, 800, 600);
 
     // Add 2 groups for Bullet objects
     playerBullets = this.physics.add.group({ classType: Bullet, runChildUpdate: true });
