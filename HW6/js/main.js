@@ -121,9 +121,9 @@ class SceneB extends Phaser.Scene {
     enemy.setVelocity(Phaser.Math.Between(-200, 200), 20);
     enemy.allowGravity = false;
     reticle = this.physics.add.sprite(800, 700, 'target');
-    hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
-    hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
-    hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
+    //hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
+    //hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
+   // hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
 
 
 //////////// NEWWWW
