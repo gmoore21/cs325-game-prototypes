@@ -56,9 +56,9 @@ class SceneB extends Phaser.Scene {
 
             // Load in images and sprites
     this.load.spritesheet('player_handgun', 'assets/player_walk_strip6.png',
-        { frameWidth: 66, frameHeight: 60 }
+        { frameWidth: 35, frameHeight: 57 }
     ); // Made by tokkatrain: https://tokkatrain.itch.io/top-down-basic-set
-    this.load.image('bullet', 'assets/bomg.png');
+    this.load.image('bullet', 'assets/bomb.png');
     this.load.image('target', 'assets/bomb.png');
     this.load.image('background', 'assets/Background.png');
 
