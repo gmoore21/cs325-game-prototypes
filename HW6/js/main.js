@@ -92,8 +92,9 @@ class SceneB extends Phaser.Scene {
 
     /////////////////////////////////////////////  new code  ///////////////////////////
 
-
     this.physics.world.setBounds(0, 0, 1600, 1200);
+
+    scoreText = this.add.text(16, 16, 'Infected: 0', { fontSize: '32px', fill: '#000' });
 
     cantWalk = this.physics.add.staticGroup();
 
@@ -247,7 +248,7 @@ class SceneB extends Phaser.Scene {
             this.physics.add.collider(enemy3, bullet, enemyHitCallback);
             this.physics.add.collider(enemy4, bullet, enemyHitCallback);
             this.physics.add.collider(enemy5, bullet, enemyHitCallback);
-            this.physics.add.collider(cantWalk, bullet, hitWall); ////// MINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            this.physics.add.collider(cantWalk, bullet, hitWall); 
         }
     }, this);
 
@@ -302,8 +303,6 @@ class SceneB extends Phaser.Scene {
             this.scene.start('sceneC');
        }
 
-
-
     }
 
 
@@ -329,7 +328,7 @@ class SceneC extends Phaser.Scene {
 
         this.input.manager.enabled = true;  // get controls enabled
 
-        scoreText = this.add.text(100, 300, 'Your Score: '+ score, { fontSize: '64px', fill: '#fff' });
+        scoreText = this.add.text(100, 300, 'You Infected: '+ score, { fontSize: '64px', fill: '#fff' });
 
         this.input.once('pointerdown', function () {
 
@@ -375,6 +374,7 @@ function enemyHitCallback(enemyHit, bulletHit)
            enemyHit.setActive(false);
            enemyHit.setFrame(1);
            score = score + 1;
+           scoreText.setText('Infected: ' + score);
         }
 
         // Destroy bullet
@@ -382,6 +382,8 @@ function enemyHitCallback(enemyHit, bulletHit)
 
     }
 }
+
+/*
 
 function playerHitCallback(playerHit, bulletHit)
 {
@@ -411,7 +413,7 @@ function playerHitCallback(playerHit, bulletHit)
     }
 }
 
-/*
+
 function enemyFire(enemy, player, time, gameObject)
 {
     if (enemy.active === false)
