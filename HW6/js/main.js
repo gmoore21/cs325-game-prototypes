@@ -121,7 +121,7 @@ class SceneB extends Phaser.Scene {
     enemys = this.physics.add.group();
     this.physics.add.collider(enemys, cantWalk);
     var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-    var enemy1 = cats.create(x, 16, 'enemy');    // create cats
+    var enemy1 = enemys.create(x, 16, 'enemy');    // create cats
     enemy1.setBounce(1);
     enemy1.setCollideWorldBounds(true);
     enemy1.setVelocity(Phaser.Math.Between(-200, 200), 20);
