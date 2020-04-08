@@ -168,11 +168,24 @@ class SceneB extends Phaser.Scene {
     // Set that players cant go through walls
     this.physics.add.collider(player, cantWalk);
     this.physics.add.collider(enemy, cantWalk);
+    this.physics.add.collider(enemy2, cantWalk);
+    this.physics.add.collider(enemy3, cantWalk);
+    this.physics.add.collider(enemy4, cantWalk);
+    this.physics.add.collider(enemy5, cantWalk);
 
     // Set sprite variables
     player.health = 3;
     enemy.health = 3;
     enemy.lastFired = 0;
+    enemy2.health = 3;
+    enemy2.lastFired = 0;
+    enemy3.health = 3;
+    enemy3.lastFired = 0;
+    enemy4.health = 3;
+    enemy4.lastFired = 0;
+    enemy5.health = 3;
+    enemy5.lastFired = 0;
+
 
     // Set camera properties
     this.cameras.main.zoom = 0.5;
@@ -267,6 +280,10 @@ class SceneB extends Phaser.Scene {
 
     // Rotates enemy to face towards player
         enemy.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
+        enemy2.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
+        enemy3.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
+        enemy4.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
+        enemy5.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
 
     //Make reticle move with player
         reticle.body.velocity.x = player.body.velocity.x;
