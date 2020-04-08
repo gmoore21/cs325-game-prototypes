@@ -333,8 +333,8 @@ class SceneC extends Phaser.Scene {
 
         this.input.once('pointerdown', function () {
 
-                score = 0;
-                gameOver = false;
+            score = 0;
+            gameOver = false;
             this.scene.start('sceneA'); // start the first game state
 
         }, this);
@@ -371,7 +371,8 @@ function enemyHitCallback(enemyHit, bulletHit)
         // Kill enemy if health <= 0
         if (enemyHit.health <= 0)
         {
-           enemyHit.setActive(false).setVisible(false);
+           //enemyHit.setActive(false).setVisible(false);
+           enemyHit.setFrame(1);
            score = score + 1;
         }
 
