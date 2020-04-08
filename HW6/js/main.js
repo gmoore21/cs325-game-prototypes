@@ -27,6 +27,9 @@ var hp3 = null;
 
 class SceneA extends Phaser.Scene {
 
+    score = 0;
+    gameOver = false;
+
     constructor ()
     {
         super({ key: 'sceneA' });       // key of Start Screen
