@@ -94,8 +94,6 @@ class SceneB extends Phaser.Scene {
 
     this.physics.world.setBounds(0, 0, 1600, 1200);
 
-    scoreText = this.add.text(300, 400, 'Infected: 0', { fontSize: '32px', fill: '#fff' });
-
     cantWalk = this.physics.add.staticGroup();
 
     // Add 2 groups for Bullet objects
@@ -104,6 +102,8 @@ class SceneB extends Phaser.Scene {
 
     // Add background player, enemy, reticle, healthpoint sprites
     var background = this.add.image(800, 600, 'background');
+
+    scoreText = this.add.text(300, 400, 'Infected: 0', { fontSize: '32px', fill: '#fff' });
 
     // Add barriers (Houses)
     cantWalk.create(600, 800, 'bar');
