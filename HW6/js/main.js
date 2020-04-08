@@ -109,7 +109,7 @@ class SceneB extends Phaser.Scene {
     hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
 
     // Set image/sprite properties
-    background.setOrigin(0.5, 0.5).setDisplaySize(1600, 1200);
+    background.setOrigin(0.5, 0.5).setDisplaySize(800, 600);
     player.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true).setDrag(500, 500);
     enemy.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
