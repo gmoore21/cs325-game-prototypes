@@ -21,6 +21,10 @@ var playerBullets = null;
 var enemyBullets = null;
 var time = 0;
 var enemy = null;
+var enemy2 = null;
+var enemy3 = null;
+var enemy4 = null;
+var enemy5 = null;
 var hp1 = null;
 var hp2 = null;
 var hp3 = null;
@@ -122,15 +126,30 @@ class SceneB extends Phaser.Scene {
 
 
 //////////// NEWWWW
-    enemys = this.physics.add.group();
-    this.physics.add.collider(enemys, cantWalk);
-    var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-    var enemy1 = enemys.create(x, 16, 'enemy');    // create cats
-    enemy1.setBounce(1);
-    enemy1.setCollideWorldBounds(true);
-    enemy1.setVelocity(Phaser.Math.Between(-200, 200), 20);
-    enemy1.allowGravity = false;
+    enemy2 = this.physics.add.sprite(500, 500, 'player_handgun2');
+    enemy2.setBounce(1);
+    enemy2.setCollideWorldBounds(true);
+    enemy2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy2.allowGravity = false;
 
+    enemy3 = this.physics.add.sprite(1000, 1000, 'player_handgun2');
+    enemy3.setBounce(1);
+    enemy3.setCollideWorldBounds(true);
+    enemy3.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy3.allowGravity = false;
+
+    enemy4 = this.physics.add.sprite(600, 600, 'player_handgun2');
+    enemy4.setBounce(1);
+    enemy4.setCollideWorldBounds(true);
+    enemy4.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy4.allowGravity = false;
+
+
+    enemy5 = this.physics.add.sprite(800, 900, 'player_handgun2');
+    enemy5.setBounce(1);
+    enemy5.setCollideWorldBounds(true);
+    enemy5.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy5.allowGravity = false;
     ///////////////////////////////
 
     // Set image/sprite properties
@@ -208,6 +227,10 @@ class SceneB extends Phaser.Scene {
             bullet.fire(player, reticle);
             this.physics.add.collider(enemy, bullet, enemyHitCallback);
             this.physics.add.collider(enemy1, bullet, enemyHitCallback);
+            this.physics.add.collider(enemy2, bullet, enemyHitCallback);
+            this.physics.add.collider(enemy3, bullet, enemyHitCallback);
+            this.physics.add.collider(enemy4, bullet, enemyHitCallback);
+            this.physics.add.collider(enemy5, bullet, enemyHitCallback);
             this.physics.add.collider(cantWalk, bullet, hitWall); ////// MINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
     }, this);
