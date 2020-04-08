@@ -333,6 +333,8 @@ class SceneC extends Phaser.Scene {
 
         this.input.once('pointerdown', function () {
 
+                score = 0;
+                gameOver = false;
             this.scene.start('sceneA'); // start the first game state
 
         }, this);
