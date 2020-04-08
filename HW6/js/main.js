@@ -297,6 +297,13 @@ class SceneB extends Phaser.Scene {
 
     // Make enemy fire
        //  enemyFire(enemy, player, time, this);
+
+       if (score == 5){
+            this.scene.start('sceneC');
+       }
+
+
+
     }
 
 
