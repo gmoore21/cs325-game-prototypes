@@ -241,6 +241,20 @@ class SceneB extends Phaser.Scene {
     }
 
 
+ hitWall (cantWalk, bullet)  
+{
+
+    bullet.disableBody(true,true);
+
+}
+
+ hitWall2 (cantWalk, bullet) 
+{
+
+    bullet.disableBody(true,true);
+
+}
+
 }
 
 class SceneC extends Phaser.Scene {
@@ -403,19 +417,6 @@ function constrainReticle(reticle)
 }
 
 
-function hitWall (cantWalk, bullet)  
-{
-
-    bullet.disableBody(true,true);
-
-}
-
-function hitWall2 (cantWalk, bullet) 
-{
-
-    bullet.disableBody(true,true);
-
-}
 
 var Bullet = new Phaser.Class({
 
