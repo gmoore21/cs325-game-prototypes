@@ -22,8 +22,10 @@ var enemy5 = null;
 var hp1 = null;
 var hp2 = null;
 var hp3 = null;
+var Sneeze
 
 //// https://phaser.io/examples/v3/view/games/topdownshooter/topdowncombatmechanics
+///// https://www.fesliyanstudios.com/royalty-free-sound-effects-download/people-sneezing-191
 
 class SceneA extends Phaser.Scene {
 
@@ -85,12 +87,16 @@ class SceneB extends Phaser.Scene {
 
         this.load.image('bar', 'assets/Bar.png');
         this.load.image('barVert', 'assets/BarVert.png');
+
+        this.load.audio('Sneeze','assets/Sneeze.mp3');    // Add game over sound
     }
 
     create ()
     {
 
     /////////////////////////////////////////////  new code  ///////////////////////////
+
+    Sneeze = this.sound.add('Sneeze');
 
     this.physics.world.setBounds(0, 0, 1600, 1200);
 
@@ -514,6 +520,7 @@ var Bullet = new Phaser.Class({
     // Fires a bullet from the player to the reticle
     fire: function (shooter, target)
     {
+        Sneeze.play()
         this.setPosition(shooter.x, shooter.y); // Initial position
         this.direction = Math.atan( (target.x-this.x) / (target.y-this.y));
 
