@@ -410,7 +410,7 @@ function hitWall (cantWalk, bullet)
 
 }
 
-function hitWall2 (enemyBullets, bullet) 
+function hitWall2 (cantWalk, bullet) 
 {
 
     bullet.disableBody(true,true);
