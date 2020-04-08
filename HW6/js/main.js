@@ -115,6 +115,19 @@ class SceneB extends Phaser.Scene {
     hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
     hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
 
+
+//////////// NEWWWW
+    enemys = this.physics.add.group();
+    this.physics.add.collider(enemys, cantWalk);
+    var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+    var enemy1 = cats.create(x, 16, 'enemy');    // create cats
+    enemy1.setBounce(1);
+    enemy1.setCollideWorldBounds(true);
+    enemy1.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy1.allowGravity = false;
+
+    ///////////////////////////////
+
     // Set image/sprite properties
     background.setOrigin(0.5, 0.5).setDisplaySize(1600, 1200);
     player.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true).setDrag(500, 500);
@@ -189,6 +202,7 @@ class SceneB extends Phaser.Scene {
         {
             bullet.fire(player, reticle);
             this.physics.add.collider(enemy, bullet, enemyHitCallback);
+            this.physics.add.collider(enemy1, bullet, enemyHitCallback);
             this.physics.add.collider(cantWalk, bullet, hitWall); ////// MINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
     }, this);
@@ -301,12 +315,12 @@ function enemyHitCallback(enemyHit, bulletHit)
         if (enemyHit.health <= 0)
         {
            enemyHit.setActive(false).setVisible(false);
+           score = score + 1;
         }
 
         // Destroy bullet
         bulletHit.setActive(false).setVisible(false);
 
-        score = score + 1;
     }
 }
 
