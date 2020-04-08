@@ -192,6 +192,7 @@ class SceneB extends Phaser.Scene {
         {
             bullet.fire(player, reticle);
             this.physics.add.collider(enemy, bullet, enemyHitCallback);
+            this.physics.add.collider(cantWalk, bullet, hitWall); ////// MINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
     }, this);
 
@@ -357,6 +358,7 @@ function enemyFire(enemy, player, time, gameObject)
             bullet.fire(enemy, player);
             // Add collider between bullet and player
             gameObject.physics.add.collider(player, bullet, playerHitCallback);
+            gameObject.physics.add.collider(cantWalk, bullet, hitWall2);
         }
     }
 }
@@ -401,17 +403,17 @@ function constrainReticle(reticle)
 }
 
 
-function hitWall (playerBullets, cantWalk)  
+function hitWall (cantWalk, bullet)  
 {
 
-    playerBullets.disableBody(true,true);
+    bullet.disableBody(true,true);
 
 }
 
-function hitWall2 (enemyBullets, cantWalk) 
+function hitWall2 (enemyBullets, bullet) 
 {
 
-    enemyBullets.disableBody(true,true);
+    bullet.disableBody(true,true);
 
 }
 
