@@ -71,6 +71,9 @@ class SceneB extends Phaser.Scene {
         this.load.spritesheet('player_handgun2', 'assets/player2.png',
            { frameWidth: 35, frameHeight: 57 }
          );
+        this.load.spritesheet('player_handgunHit', 'assets/player2hit.png',
+           { frameWidth: 35, frameHeight: 57 }
+         );
         this.load.image('bullet', 'assets/bomb.png');
         this.load.image('target', 'assets/bomb.png');
         this.load.image('background', 'assets/Background.png');
@@ -96,6 +99,7 @@ class SceneB extends Phaser.Scene {
     // Add background player, enemy, reticle, healthpoint sprites
     var background = this.add.image(800, 600, 'background');
 
+    // Add barriers (Houses)
     cantWalk.create(600, 800, 'bar');
     cantWalk.create(775 , 975, 'barVert')
     cantWalk.create(600, 1150, 'bar');
@@ -103,8 +107,6 @@ class SceneB extends Phaser.Scene {
     cantWalk.create(1000, 200, 'bar');
     cantWalk.create(825 , 375, 'barVert')
     cantWalk.create(1000, 550, 'bar');
-
-
 
     player = this.physics.add.sprite(800, 600, 'player_handgun');
     enemy = this.physics.add.sprite(300, 600, 'player_handgun2');
@@ -122,7 +124,7 @@ class SceneB extends Phaser.Scene {
     hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
     hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
 
-
+    // Set that players cant go through walls
     this.physics.add.collider(player, cantWalk);
     this.physics.add.collider(enemy, cantWalk);
 
@@ -232,7 +234,7 @@ class SceneB extends Phaser.Scene {
         constrainReticle(reticle);
 
     // Make enemy fire
-         enemyFire(enemy, player, time, this);
+       //  enemyFire(enemy, player, time, this);
     }
 
 
@@ -303,6 +305,8 @@ function enemyHitCallback(enemyHit, bulletHit)
 
         // Destroy bullet
         bulletHit.setActive(false).setVisible(false);
+
+        score = score + 1;
     }
 }
 
@@ -334,6 +338,7 @@ function playerHitCallback(playerHit, bulletHit)
     }
 }
 
+/*
 function enemyFire(enemy, player, time, gameObject)
 {
     if (enemy.active === false)
@@ -358,6 +363,7 @@ function enemyFire(enemy, player, time, gameObject)
     }
 }
 
+*/
 // Ensures sprite speed doesnt exceed maxVelocity while update is called
 function constrainVelocity(sprite, maxVelocity)
 {
