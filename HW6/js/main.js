@@ -127,6 +127,8 @@ class SceneB extends Phaser.Scene {
 
     this.physics.add.collider(player, cantWalk);
     this.physics.add.collider(enemy, cantWalk);
+    this.physics.add.collider(playerBullets, cantWalk);
+    this.physics.add.collider(enemyBullets, cantWalk);
 
 
     // Set sprite variables
