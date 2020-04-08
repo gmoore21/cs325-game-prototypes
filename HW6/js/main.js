@@ -94,7 +94,7 @@ class SceneB extends Phaser.Scene {
 
     this.physics.world.setBounds(0, 0, 1600, 1200);
 
-    scoreText = this.add.text(16, 16, 'Infected: 0', { fontSize: '32px', fill: '#000' });
+    scoreText = this.add.text(16, 16, 'Infected: 0', { fontSize: '32px', fill: '#fff' });
 
     cantWalk = this.physics.add.staticGroup();
 
