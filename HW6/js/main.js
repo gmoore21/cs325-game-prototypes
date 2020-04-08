@@ -162,9 +162,9 @@ class SceneB extends Phaser.Scene {
     enemy4.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     enemy5.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
-    hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    //hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    //hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    //hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
 
     // Set that players cant go through walls
     this.physics.add.collider(player, cantWalk);
