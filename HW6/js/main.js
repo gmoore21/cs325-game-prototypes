@@ -64,14 +64,19 @@ class SceneB extends Phaser.Scene {
             // NEW CODE ///////
 
             // Load in images and sprites
-    this.load.spritesheet('player_handgun', 'assets/player_walk_strip6.png',
-        { frameWidth: 35, frameHeight: 57 }
-    ); // Made by tokkatrain: https://tokkatrain.itch.io/top-down-basic-set
-    this.load.image('bullet', 'assets/bomb.png');
-    this.load.image('target', 'assets/bomb.png');
-    this.load.image('background', 'assets/Background.png');
+        this.load.spritesheet('player_handgun', 'assets/player_walk_strip6.png',
+           { frameWidth: 35, frameHeight: 57 }
+         ); // Made by tokkatrain: https://tokkatrain.itch.io/top-down-basic-set
+        this.load.image('bullet', 'assets/bomb.png');
+        this.load.image('target', 'assets/bomb.png');
+        this.load.image('background', 'assets/Background.png');
 
 
+        this.load.image('table', 'assets/CenterTable.png');
+        this.load.image('couch', 'assets/Couch.png');
+        this.load.image('couch2', 'assets/Couch2.png');
+        this.load.image('bar', 'assets/Bar.png');
+        this.load.image('TV', 'assets/TV.png');
     }
 
     create ()
@@ -80,7 +85,15 @@ class SceneB extends Phaser.Scene {
     /////////////////////////////////////////////  new code  ///////////////////////////
 
 
-        this.physics.world.setBounds(0, 0, 800, 600);
+    this.physics.world.setBounds(0, 0, 1600, 1200);
+
+    cantWalk = this.physics.add.staticGroup();
+
+    cantWalk.create(400, 300, 'table');
+    cantWalk.create(400, 125, 'couch');
+    cantWalk.create(200, 300, 'couch2');
+    cantWalk.create(600, 550, 'bar');
+    cantWalk.create(700, 300, 'TV');
 
     // Add 2 groups for Bullet objects
     playerBullets = this.physics.add.group({ classType: Bullet, runChildUpdate: true });
@@ -103,6 +116,11 @@ class SceneB extends Phaser.Scene {
     hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
     hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
     hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+
+
+    this.physics.add.collider(player, cantWalk);
+    this.physics.add.collider(enemy, cantWalk);
+    
 
     // Set sprite variables
     player.health = 3;
