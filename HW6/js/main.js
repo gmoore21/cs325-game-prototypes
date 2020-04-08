@@ -89,18 +89,17 @@ class SceneB extends Phaser.Scene {
 
     cantWalk = this.physics.add.staticGroup();
 
-    cantWalk.create(400, 300, 'table');
-    cantWalk.create(400, 125, 'couch');
-    cantWalk.create(200, 300, 'couch2');
-    cantWalk.create(600, 550, 'bar');
-    cantWalk.create(700, 300, 'TV');
-
     // Add 2 groups for Bullet objects
     playerBullets = this.physics.add.group({ classType: Bullet, runChildUpdate: true });
     enemyBullets = this.physics.add.group({ classType: Bullet, runChildUpdate: true });
 
     // Add background player, enemy, reticle, healthpoint sprites
     var background = this.add.image(800, 600, 'background');
+    cantWalk.create(400, 300, 'table');
+    cantWalk.create(400, 125, 'couch');
+    cantWalk.create(200, 300, 'couch2');
+    cantWalk.create(600, 550, 'bar');
+    cantWalk.create(700, 300, 'TV');
     player = this.physics.add.sprite(800, 600, 'player_handgun');
     enemy = this.physics.add.sprite(300, 600, 'player_handgun');
     reticle = this.physics.add.sprite(800, 700, 'target');
@@ -120,7 +119,7 @@ class SceneB extends Phaser.Scene {
 
     this.physics.add.collider(player, cantWalk);
     this.physics.add.collider(enemy, cantWalk);
-    
+
 
     // Set sprite variables
     player.health = 3;
