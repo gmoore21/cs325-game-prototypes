@@ -111,6 +111,10 @@ class SceneB extends Phaser.Scene {
 
     player = this.physics.add.sprite(800, 600, 'player_handgun');
     enemy = this.physics.add.sprite(300, 600, 'player_handgun2');
+    enemy.setBounce(1);
+    enemy.setCollideWorldBounds(true);
+    enemy.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy.allowGravity = false;
     reticle = this.physics.add.sprite(800, 700, 'target');
     hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
     hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
