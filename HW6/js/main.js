@@ -403,14 +403,14 @@ function constrainReticle(reticle)
 function hitWall (cantWalk, bullet)  
 {
 
-    bullet.setActive(false).setVisible(false);
+    cantWalk.setActive(false).setVisible(false);
 
 }
 
 function hitWall2 (cantWalk, bullet) 
 {
 
-    bullet.setActive(false).setVisible(false);
+    cantWalk.setActive(false).setVisible(false);
 
 }
 
