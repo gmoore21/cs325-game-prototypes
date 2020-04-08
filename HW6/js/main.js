@@ -109,13 +109,13 @@ class SceneB extends Phaser.Scene {
     hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
 
     // Set image/sprite properties
-    background.setOrigin(0.5, 0.5);
-    player.setOrigin(0.5, 0.5).setCollideWorldBounds(true).setDrag(500, 500);
-    enemy.setOrigin(0.5, 0.5).setCollideWorldBounds(true);
-    reticle.setOrigin(0.5, 0.5).setCollideWorldBounds(true);
-    hp1.setOrigin(0.5, 0.5);
-    hp2.setOrigin(0.5, 0.5);
-    hp3.setOrigin(0.5, 0.5);
+    background.setOrigin(0.5, 0.5).setDisplaySize(1600, 1200);
+    player.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true).setDrag(500, 500);
+    enemy.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
+    hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
 
 
     this.physics.add.collider(player, cantWalk);
