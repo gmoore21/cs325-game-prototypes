@@ -27,6 +27,12 @@ var Sneeze
 //// https://phaser.io/examples/v3/view/games/topdownshooter/topdowncombatmechanics
 ///// https://www.fesliyanstudios.com/royalty-free-sound-effects-download/people-sneezing-191
 
+
+/// Finish the start and end screen
+// add game over music
+// add background music?
+// do the write up
+
 class SceneA extends Phaser.Scene {
 
     score = 0;
