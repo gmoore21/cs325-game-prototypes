@@ -24,14 +24,14 @@ var hp2 = null;
 var hp3 = null;
 var Sneeze
 
-//// https://phaser.io/examples/v3/view/games/topdownshooter/topdowncombatmechanics
-///// https://www.fesliyanstudios.com/royalty-free-sound-effects-download/people-sneezing-191
+//// closest example https://phaser.io/examples/v3/view/games/topdownshooter/topdowncombatmechanics
+///// sound for sneeze https://www.fesliyanstudios.com/royalty-free-sound-effects-download/people-sneezing-191
+/////// beer pic https://starecat.com/the-corona-virus-made-of-corona-extra-beer-bottles/
 
 
-/// Finish the start and end screen
+
 // add game over music
-// add background music?
-// do the write up
+
 
 class SceneA extends Phaser.Scene {
 
@@ -95,6 +95,7 @@ class SceneB extends Phaser.Scene {
         this.load.image('barVert', 'assets/BarVert.png');
 
         this.load.audio('Sneeze','assets/Sneeze.mp3');    // Add game over sound
+        this.load.audio('theme','assets/BackgroundMusic.mp3');  // Add background music 
     }
 
     create ()
@@ -137,6 +138,8 @@ class SceneB extends Phaser.Scene {
     //hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
    // hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
 
+    backgroundMusic = this.sound.add('theme');
+    backgroundMusic.play();
 
 //////////// NEWWWW
     enemy2 = this.physics.add.sprite(500, 500, 'player_handgun2');
