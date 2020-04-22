@@ -355,13 +355,18 @@ class SceneC extends Phaser.Scene {
         //    this.scene.start('sceneD');
         //}
 
+        this.input.keyboard.on('keyup_SPACE', this.pressKey, this);
+
+        pressKey(){
+            this.scene.start('sceneD');
+        }
         
 
-        this.input.once('pointerdown', function () {
+        //this.input.once('pointerdown', function () {
 
-            this.scene.start('sceneD'); // start the second game state
+        //    this.scene.start('sceneD'); // start the second game state
 
-        }, this);
+       // }, this);
         
     }
 
