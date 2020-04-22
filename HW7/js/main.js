@@ -328,16 +328,46 @@ class SceneB extends Phaser.Scene {
 }
 
 
+class SceneC extends Phaser.Scene {
+
+    constructor ()
+    {
+        super({ key: 'sceneC' });       // key of Start Screen
+    }
+
+    preload ()
+    {
+        this.load.image('Level2Screen', 'assets/Level2Screen.png');   // add the Screen
+    }
+
+    create ()
+    {
+        this.StartScreen = this.add.image(400, 300, 'Level2Screen');    // add image
+
+        this.input.manager.enabled = true;  // get controls enabled
+
+        scoreText = this.add.text(100, 300, 'You Infected: '+ score, { fontSize: '64px', fill: '#fff' });
+
+        this.input.once('pointerdown', function () {
+
+            this.scene.start('sceneD'); // start the second game state
+
+        }, this);
+    }
+
+}
+
+
 //////////////////////////////////// LEVEL 2 ////////////////////////////////////////////
 
-class SceneC extends Phaser.Scene {
+class SceneD extends Phaser.Scene {
 
     score = 0;
     gameOver = false;
 
     constructor ()
     {
-        super({ key: 'sceneC' });
+        super({ key: 'sceneD' });
     }
 
     preload ()
@@ -593,10 +623,10 @@ class SceneC extends Phaser.Scene {
          enemyFire(enemy5, player, time, this);
 
        if (score == 5){
-            this.scene.start('sceneD');
+            this.scene.start('sceneE');
        }
         if(player.health == 0){
-            this.scene.start('sceneD');
+            this.scene.start('sceneE');
         }
 
     }
@@ -609,11 +639,11 @@ class SceneC extends Phaser.Scene {
 ////////////////////////////////////  END SCREEN /////////////////////////////////////////////
 
 
-class SceneD extends Phaser.Scene {
+class SceneE extends Phaser.Scene {
 
     constructor ()
     {
-        super({ key: 'sceneD' });
+        super({ key: 'sceneE' });
     }
 
     preload ()
@@ -655,7 +685,7 @@ var config = {
     },
     backgroundColor: '#000000',
     parent: 'phaser-example',
-    scene: [ SceneA, SceneB, SceneC, SceneD ]
+    scene: [ SceneA, SceneB, SceneC, SceneD, SceneE ]
 };
 
 var game = new Phaser.Game(config);
