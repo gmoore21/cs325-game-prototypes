@@ -399,9 +399,12 @@ class SceneC extends Phaser.Scene {
     enemy.setVelocity(Phaser.Math.Between(-200, 200), 20);
     enemy.allowGravity = false;
     reticle = this.physics.add.sprite(800, 700, 'target');
-    //hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
-    //hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
-   // hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
+
+
+    ///////////////////// UNDID THIS  ////////////////////////////
+    hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
+    hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
+    hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
 
     backgroundMusic = this.sound.add('theme');
     backgroundMusic.play();
@@ -442,9 +445,12 @@ class SceneC extends Phaser.Scene {
     enemy4.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     enemy5.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
-    //hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    //hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    //hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+
+
+    //////////////////////////  UNDID THIS PART  ////////////////////////////////
+    hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
 
     // Set that players cant go through walls
     this.physics.add.collider(player, cantWalk);
@@ -577,7 +583,7 @@ class SceneC extends Phaser.Scene {
         constrainReticle(reticle);
 
     // Make enemy fire
-       //  enemyFire(enemy, player, time, this);
+         enemyFire(enemy, player, time, this);        /////////////////// undid this
 
        if (score == 5){
             this.scene.start('sceneD');
@@ -668,7 +674,7 @@ function enemyHitCallback(enemyHit, bulletHit)
     }
 }
 
-/*
+//////////////////////////////////////////////////////////////////////
 
 function playerHitCallback(playerHit, bulletHit)
 {
@@ -723,7 +729,7 @@ function enemyFire(enemy, player, time, gameObject)
     }
 }
 
-*/
+//////////////////////////////////////////////////////////////////////////////////////////
 // Ensures sprite speed doesnt exceed maxVelocity while update is called
 function constrainVelocity(sprite, maxVelocity)
 {
