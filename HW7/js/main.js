@@ -27,6 +27,8 @@ var spaceKey;
 
 var healthText;
 
+var sKey = this.input.keyboard.addKey('W');
+
 //// closest example https://phaser.io/examples/v3/view/games/topdownshooter/topdowncombatmechanics
 ///// sound for sneeze https://www.fesliyanstudios.com/royalty-free-sound-effects-download/people-sneezing-191
 /////// beer pic https://starecat.com/the-corona-virus-made-of-corona-extra-beer-bottles/
@@ -329,6 +331,7 @@ class SceneB extends Phaser.Scene {
 
 class SceneC extends Phaser.Scene {
 
+
     constructor ()
     {
         super({ key: 'sceneC' });       // key of Start Screen
@@ -348,10 +351,6 @@ class SceneC extends Phaser.Scene {
         scoreText = this.add.text(100, 300, 'You Infected: '+ score, { fontSize: '64px', fill: '#fff' });
 
         score = 0;
-
-        var sKey = this.input.keyboard.addKey('W');
-
-        
 
         //this.input.once('pointerdown', function () {
 
