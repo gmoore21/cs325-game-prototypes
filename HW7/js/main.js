@@ -420,9 +420,9 @@ class SceneD extends Phaser.Scene {
 
     // Add barriers (Houses)
     // (x,y)
-    cantWalk.create(300, 200, 'bar');
-    cantWalk.create(425 , 325, 'barVert')
-    cantWalk.create(300, 650, 'bar');
+    cantWalk.create(350, 200, 'bar');
+    cantWalk.create(525 , 375, 'barVert')
+    cantWalk.create(350, 550, 'bar');
 
     cantWalk.create(1000, 200, 'bar');
     cantWalk.create(825 , 375, 'barVert')
