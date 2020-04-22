@@ -192,7 +192,7 @@ class SceneB extends Phaser.Scene {
     this.physics.add.collider(enemy5, cantWalk);
 
     // Set sprite variables
-    player.health = 3;
+    player.health = 20;
     enemy.health = 3;
     enemy.lastFired = 0;
     enemy2.health = 3;
@@ -384,7 +384,7 @@ class SceneC extends Phaser.Scene {
     var background = this.add.image(800, 600, 'background');
 
     scoreText = this.add.text(100, 50, 'Infected: 0', { fontSize: '64px', fill: '#fff' });
-    healthText = this.add.text(400, 50, 'Health: 10', { fontSize: '64px', fill: '#fff' });
+    healthText = this.add.text(600, 50, 'Health: 20', { fontSize: '64px', fill: '#fff' });
 
     // Add barriers (Houses)
     cantWalk.create(600, 800, 'bar');
@@ -712,7 +712,7 @@ function playerHitCallback(playerHit, bulletHit)
         healthText.setText('Health: '+ playerHit.health)
 
         if(playerHit.health == 0){
-            this.scene.start('sceneC');
+            this.scene.start('sceneD');
         }
         // Destroy bullet
         bulletHit.setActive(false).setVisible(false);
