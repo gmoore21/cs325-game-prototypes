@@ -349,7 +349,7 @@ class SceneC extends Phaser.Scene {
 
         score = 0;
 
-        var sKey = this.input.keyboard.addKey('SPACE');
+        var sKey = this.input.keyboard.addKey('W');
 
         if(sKey.isDown){
             this.scene.start('sceneD');
