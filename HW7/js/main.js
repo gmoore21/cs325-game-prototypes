@@ -24,6 +24,8 @@ var hp2 = null;
 var hp3 = null;
 var Sneeze
 
+var healthText;
+
 //// closest example https://phaser.io/examples/v3/view/games/topdownshooter/topdowncombatmechanics
 ///// sound for sneeze https://www.fesliyanstudios.com/royalty-free-sound-effects-download/people-sneezing-191
 /////// beer pic https://starecat.com/the-corona-virus-made-of-corona-extra-beer-bottles/
@@ -382,6 +384,7 @@ class SceneC extends Phaser.Scene {
     var background = this.add.image(800, 600, 'background');
 
     scoreText = this.add.text(100, 50, 'Infected: 0', { fontSize: '64px', fill: '#fff' });
+    healthText = this.add.text(400, 50, 'Health: 10', { fontSize: '64px', fill: '#fff' });
 
     // Add barriers (Houses)
     cantWalk.create(600, 800, 'bar');
@@ -461,7 +464,7 @@ class SceneC extends Phaser.Scene {
     this.physics.add.collider(enemy5, cantWalk);
 
     // Set sprite variables
-    player.health = 3;
+    player.health = 10;
     enemy.health = 3;
     enemy.lastFired = 0;
     enemy2.health = 3;
@@ -689,6 +692,7 @@ function playerHitCallback(playerHit, bulletHit)
         console.log("Player hp: ", playerHit.health);
 
         // Kill hp sprites and kill player if health <= 0
+        /*
         if (playerHit.health == 2)
         {
             hp3.destroy();
@@ -702,7 +706,14 @@ function playerHitCallback(playerHit, bulletHit)
             hp1.destroy();
             // Game over state should execute here
         }
+        */
 
+
+        healthText.setText('Health: '+ playerHit.health)
+
+        if(playerHit.health == 0){
+            this.scene.start('sceneC');
+        }
         // Destroy bullet
         bulletHit.setActive(false).setVisible(false);
     }
