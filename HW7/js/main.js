@@ -584,6 +584,10 @@ class SceneC extends Phaser.Scene {
 
     // Make enemy fire
          enemyFire(enemy, player, time, this);        /////////////////// undid this
+         enemyFire(enemy2, player, time, this);
+         enemyFire(enemy3, player, time, this);
+         enemyFire(enemy4, player, time, this);
+         enemyFire(enemy5, player, time, this);
 
        if (score == 5){
             this.scene.start('sceneD');
