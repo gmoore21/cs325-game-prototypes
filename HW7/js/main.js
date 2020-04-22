@@ -441,12 +441,6 @@ class SceneD extends Phaser.Scene {
     enemy.allowGravity = false;
     reticle = this.physics.add.sprite(800, 700, 'target');
 
-
-    ///////////////////// UNDID THIS  ////////////////////////////
-    //hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
-    //hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
-    //hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
-
     backgroundMusic = this.sound.add('theme');
     backgroundMusic.play();
 
@@ -486,12 +480,6 @@ class SceneD extends Phaser.Scene {
     enemy4.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     enemy5.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
-
-
-    //////////////////////////  UNDID THIS PART  ////////////////////////////////
-    ///hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    //hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    //hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
 
     // Set that players cant go through walls
     this.physics.add.collider(player, cantWalk);
@@ -634,6 +622,8 @@ class SceneD extends Phaser.Scene {
             this.scene.start('sceneE');
        }
         if(player.health <= 0){
+
+            backgroundMusic.pause();
             this.scene.start('sceneE');
         }
 
@@ -657,12 +647,14 @@ class SceneE extends Phaser.Scene {
     preload ()
     {
         this.load.image('EndScreen', 'assets/EndScreen.png');
+        this.load.audio('gameOver','assets/GameOver.mp3');  // Add background music
     }
 
     create ()
     {
 
-
+            GameOversound = this.sound.add('theme');
+            GameOversound.play();
         this.EndScreen = this.add.image(400, 300, 'EndScreen');    // add image
 
         this.input.manager.enabled = true;  // get controls enabled
@@ -731,24 +723,6 @@ function playerHitCallback(playerHit, bulletHit)
     {
         playerHit.health = playerHit.health - 2;
         console.log("Player hp: ", playerHit.health);
-
-        // Kill hp sprites and kill player if health <= 0
-        /*
-        if (playerHit.health == 2)
-        {
-            hp3.destroy();
-        }
-        else if (playerHit.health == 1)
-        {
-            hp2.destroy();
-        }
-        else
-        {
-            hp1.destroy();
-            // Game over state should execute here
-        }
-        */
-
 
         healthText.setText('Health: '+ playerHit.health)
 
