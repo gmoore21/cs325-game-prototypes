@@ -351,11 +351,6 @@ class SceneC extends Phaser.Scene {
 
         var sKey = this.input.keyboard.addKey('W');
 
-        if(sKey.isDown){
-            this.scene.start('sceneD');
-        }
-
-   
         
 
         //this.input.once('pointerdown', function () {
@@ -366,6 +361,14 @@ class SceneC extends Phaser.Scene {
         
     }
 
+
+    update(){
+        
+        if(sKey.isDown){
+            this.scene.start('sceneD');
+        }
+
+    }
 }
 
 
