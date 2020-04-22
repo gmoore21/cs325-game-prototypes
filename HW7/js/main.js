@@ -357,7 +357,7 @@ class SceneC extends Phaser.Scene {
 
         this.input.keyboard.on('keyup_SPACE', this.pressKey, this);
 
-        pressKey(){
+        function pressKey () {
             this.scene.start('sceneD');
         }
         
