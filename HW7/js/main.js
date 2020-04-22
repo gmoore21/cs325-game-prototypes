@@ -323,11 +323,279 @@ class SceneB extends Phaser.Scene {
 
 }
 
+
+//////////////////////////////////// LEVEL 2 ////////////////////////////////////////////
+
 class SceneC extends Phaser.Scene {
+
+    score = 0;
+    gameOver = false;
 
     constructor ()
     {
         super({ key: 'sceneC' });
+    }
+
+    preload ()
+    {
+            // NEW CODE ///////
+
+            // Load in images and sprites
+        this.load.spritesheet('player_handgun', 'assets/player_walk_strip6.png',
+           { frameWidth: 35, frameHeight: 57 }
+         ); // Made by tokkatrain: https://tokkatrain.itch.io/top-down-basic-set
+        this.load.spritesheet('player_handgun2', 'assets/player2.png',
+           { frameWidth: 35, frameHeight: 57 }
+         );
+        this.load.spritesheet('player_handgunHit', 'assets/player2hit.png',
+           { frameWidth: 35, frameHeight: 57 }
+         );
+        this.load.image('bullet', 'assets/bomb.png');
+        this.load.image('target', 'assets/bomb.png');
+        this.load.image('background', 'assets/Background.png');
+
+        this.load.image('bar', 'assets/Bar.png');
+        this.load.image('barVert', 'assets/BarVert.png');
+
+        this.load.audio('Sneeze','assets/Sneeze.mp3');    // Add game over sound
+        this.load.audio('theme','assets/BackgroundMusic.mp3');  // Add background music 
+    }
+
+    create ()
+    {
+
+    /////////////////////////////////////////////  new code  ///////////////////////////
+
+    Sneeze = this.sound.add('Sneeze');
+
+    this.physics.world.setBounds(0, 0, 1600, 1200);
+
+    cantWalk = this.physics.add.staticGroup();
+
+    // Add 2 groups for Bullet objects
+    playerBullets = this.physics.add.group({ classType: Bullet, runChildUpdate: true });
+    enemyBullets = this.physics.add.group({ classType: Bullet, runChildUpdate: true });
+
+    // Add background player, enemy, reticle, healthpoint sprites
+    var background = this.add.image(800, 600, 'background');
+
+    scoreText = this.add.text(100, 50, 'Infected: 0', { fontSize: '64px', fill: '#fff' });
+
+    // Add barriers (Houses)
+    cantWalk.create(600, 800, 'bar');
+    cantWalk.create(775 , 975, 'barVert')
+    cantWalk.create(600, 1150, 'bar');
+
+    cantWalk.create(1000, 200, 'bar');
+    cantWalk.create(825 , 375, 'barVert')
+    cantWalk.create(1000, 550, 'bar');
+
+    player = this.physics.add.sprite(800, 600, 'player_handgun');
+    enemy = this.physics.add.sprite(300, 600, 'player_handgun2');
+    enemy.setBounce(1);
+    enemy.setCollideWorldBounds(true);
+    enemy.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy.allowGravity = false;
+    reticle = this.physics.add.sprite(800, 700, 'target');
+    //hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
+    //hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
+   // hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
+
+    backgroundMusic = this.sound.add('theme');
+    backgroundMusic.play();
+
+//////////// NEWWWW
+    enemy2 = this.physics.add.sprite(500, 500, 'player_handgun2');
+    enemy2.setBounce(1);
+    enemy2.setCollideWorldBounds(true);
+    enemy2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy2.allowGravity = false;
+
+    enemy3 = this.physics.add.sprite(1000, 1000, 'player_handgun2');
+    enemy3.setBounce(1);
+    enemy3.setCollideWorldBounds(true);
+    enemy3.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy3.allowGravity = false;
+
+    enemy4 = this.physics.add.sprite(600, 600, 'player_handgun2');
+    enemy4.setBounce(1);
+    enemy4.setCollideWorldBounds(true);
+    enemy4.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy4.allowGravity = false;
+
+
+    enemy5 = this.physics.add.sprite(800, 900, 'player_handgun2');
+    enemy5.setBounce(1);
+    enemy5.setCollideWorldBounds(true);
+    enemy5.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    enemy5.allowGravity = false;
+    ///////////////////////////////
+
+    // Set image/sprite properties
+    background.setOrigin(0.5, 0.5).setDisplaySize(1600, 1200);
+    player.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true).setDrag(500, 500);
+    enemy.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    enemy2.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    enemy3.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    enemy4.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    enemy5.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
+    reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
+    //hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    //hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    //hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+
+    // Set that players cant go through walls
+    this.physics.add.collider(player, cantWalk);
+    this.physics.add.collider(enemy, cantWalk);
+    this.physics.add.collider(enemy2, cantWalk);
+    this.physics.add.collider(enemy3, cantWalk);
+    this.physics.add.collider(enemy4, cantWalk);
+    this.physics.add.collider(enemy5, cantWalk);
+
+    // Set sprite variables
+    player.health = 3;
+    enemy.health = 3;
+    enemy.lastFired = 0;
+    enemy2.health = 3;
+    enemy2.lastFired = 0;
+    enemy3.health = 3;
+    enemy3.lastFired = 0;
+    enemy4.health = 3;
+    enemy4.lastFired = 0;
+    enemy5.health = 3;
+    enemy5.lastFired = 0;
+
+
+    // Set camera properties
+    this.cameras.main.zoom = 0.5;
+    this.cameras.main.startFollow(player);
+
+    // Creates object for input with WASD kets
+    moveKeys = this.input.keyboard.addKeys({
+        'up': Phaser.Input.Keyboard.KeyCodes.W,
+        'down': Phaser.Input.Keyboard.KeyCodes.S,
+        'left': Phaser.Input.Keyboard.KeyCodes.A,
+        'right': Phaser.Input.Keyboard.KeyCodes.D
+    });
+
+    // Enables movement of player with WASD keys
+    this.input.keyboard.on('keydown_W', function (event) {
+        player.setAccelerationY(-800);
+    });
+    this.input.keyboard.on('keydown_S', function (event) {
+        player.setAccelerationY(800);
+    });
+    this.input.keyboard.on('keydown_A', function (event) {
+        player.setAccelerationX(-800);
+    });
+    this.input.keyboard.on('keydown_D', function (event) {
+        player.setAccelerationX(800);
+    });
+
+    // Stops player acceleration on uppress of WASD keys
+    this.input.keyboard.on('keyup_W', function (event) {
+        if (moveKeys['down'].isUp)
+            player.setAccelerationY(0);
+    });
+    this.input.keyboard.on('keyup_S', function (event) {
+        if (moveKeys['up'].isUp)
+            player.setAccelerationY(0);
+    });
+    this.input.keyboard.on('keyup_A', function (event) {
+        if (moveKeys['right'].isUp)
+            player.setAccelerationX(0);
+    });
+    this.input.keyboard.on('keyup_D', function (event) {
+        if (moveKeys['left'].isUp)
+            player.setAccelerationX(0);
+    });
+
+    // Fires bullet from player on left click of mouse
+    this.input.on('pointerdown', function (pointer, time, lastFired) {
+        if (player.active === false)
+            return;
+
+        // Get bullet from bullets group
+        var bullet = playerBullets.get().setActive(true).setVisible(true);
+
+        if (bullet)
+        {
+            bullet.fire(player, reticle);
+            this.physics.add.collider(enemy, bullet, enemyHitCallback);
+            this.physics.add.collider(enemy2, bullet, enemyHitCallback);
+            this.physics.add.collider(enemy3, bullet, enemyHitCallback);
+            this.physics.add.collider(enemy4, bullet, enemyHitCallback);
+            this.physics.add.collider(enemy5, bullet, enemyHitCallback);
+            this.physics.add.collider(cantWalk, bullet, hitWall); 
+        }
+    }, this);
+
+    // Pointer lock will only work after mousedown
+    game.canvas.addEventListener('mousedown', function () {
+        game.input.mouse.requestPointerLock();
+    });
+
+    // Exit pointer lock when Q or escape (by default) is pressed.
+    this.input.keyboard.on('keydown_Q', function (event) {
+        if (game.input.mouse.locked)
+            game.input.mouse.releasePointerLock();
+    }, 0, this);
+
+    // Move reticle upon locked pointer move
+    this.input.on('pointermove', function (pointer) {
+        if (this.input.mouse.locked)
+        {
+            reticle.x += pointer.movementX;
+            reticle.y += pointer.movementY;
+        }
+    }, this);
+
+    }
+
+     update (time, delta)
+    {
+    // Rotates player to face towards reticle
+        player.rotation = Phaser.Math.Angle.Between(player.x, player.y, reticle.x, reticle.y);
+
+    // Rotates enemy to face towards player
+        enemy.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
+        enemy2.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
+        enemy3.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
+        enemy4.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
+        enemy5.rotation = Phaser.Math.Angle.Between(enemy.x, enemy.y, player.x, player.y);
+
+    //Make reticle move with player
+        reticle.body.velocity.x = player.body.velocity.x;
+        reticle.body.velocity.y = player.body.velocity.y;
+
+    // Constrain velocity of player
+        constrainVelocity(player, 500);
+
+    // Constrain position of constrainReticle
+        constrainReticle(reticle);
+
+    // Make enemy fire
+       //  enemyFire(enemy, player, time, this);
+
+       if (score == 5){
+            this.scene.start('sceneD');
+       }
+
+    }
+
+
+}
+
+
+
+////////////////////////////////////  END SCREEN /////////////////////////////////////////////
+
+
+class SceneD extends Phaser.Scene {
+
+    constructor ()
+    {
+        super({ key: 'sceneD' });
     }
 
     preload ()
@@ -369,7 +637,7 @@ var config = {
     },
     backgroundColor: '#000000',
     parent: 'phaser-example',
-    scene: [ SceneA, SceneB, SceneC ]
+    scene: [ SceneA, SceneB, SceneC, SceneD ]
 };
 
 var game = new Phaser.Game(config);
