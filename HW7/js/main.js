@@ -349,20 +349,20 @@ class SceneC extends Phaser.Scene {
 
         score = 0;
 
-        var sKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+       // var sKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        if(sKey.isDown){
-            this.scene.start('sceneD');
-        }
+       // if(sKey.isDown){
+        //    this.scene.start('sceneD');
+        //}
 
-        /*
+        
 
         this.input.once('pointerdown', function () {
 
             this.scene.start('sceneD'); // start the second game state
 
         }, this);
-        */
+        
     }
 
 }
