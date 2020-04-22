@@ -405,9 +405,9 @@ class SceneC extends Phaser.Scene {
 
 
     ///////////////////// UNDID THIS  ////////////////////////////
-    hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
-    hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
-    hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
+    //hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
+    //hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
+    //hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
 
     backgroundMusic = this.sound.add('theme');
     backgroundMusic.play();
@@ -451,9 +451,9 @@ class SceneC extends Phaser.Scene {
 
 
     //////////////////////////  UNDID THIS PART  ////////////////////////////////
-    hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    ///hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    //hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+    //hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
 
     // Set that players cant go through walls
     this.physics.add.collider(player, cantWalk);
@@ -595,6 +595,9 @@ class SceneC extends Phaser.Scene {
        if (score == 5){
             this.scene.start('sceneD');
        }
+        if(player.health == 0){
+            this.scene.start('sceneD');
+        }
 
     }
 
@@ -688,7 +691,7 @@ function playerHitCallback(playerHit, bulletHit)
     // Reduce health of player
     if (bulletHit.active === true && playerHit.active === true)
     {
-        playerHit.health = playerHit.health - 1;
+        playerHit.health = playerHit.health - 2;
         console.log("Player hp: ", playerHit.health);
 
         // Kill hp sprites and kill player if health <= 0
@@ -711,9 +714,6 @@ function playerHitCallback(playerHit, bulletHit)
 
         healthText.setText('Health: '+ playerHit.health)
 
-        if(playerHit.health == 0){
-            scene.start('sceneD');
-        }
         // Destroy bullet
         bulletHit.setActive(false).setVisible(false);
     }
