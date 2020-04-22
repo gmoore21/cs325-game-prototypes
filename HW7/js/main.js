@@ -137,9 +137,6 @@ class SceneB extends Phaser.Scene {
     enemy.setVelocity(Phaser.Math.Between(-200, 200), 20);
     enemy.allowGravity = false;
     reticle = this.physics.add.sprite(800, 700, 'target');
-    //hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
-    //hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
-   // hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
 
     backgroundMusic = this.sound.add('theme');
     backgroundMusic.play();
@@ -180,9 +177,6 @@ class SceneB extends Phaser.Scene {
     enemy4.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     enemy5.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
-    //hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    //hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    //hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
 
     // Set that players cant go through walls
     this.physics.add.collider(player, cantWalk);
@@ -314,9 +308,6 @@ class SceneB extends Phaser.Scene {
     // Constrain position of constrainReticle
         constrainReticle(reticle);
 
-    // Make enemy fire
-       //  enemyFire(enemy, player, time, this);
-
        if (score == 5){
             this.scene.start('sceneC');
        }
@@ -416,7 +407,7 @@ class SceneD extends Phaser.Scene {
     var background = this.add.image(800, 600, 'background');
 
     scoreText = this.add.text(100, 50, 'Infected: 0', { fontSize: '64px', fill: '#fff' });
-    healthText = this.add.text(600, 50, 'Health: 100', { fontSize: '64px', fill: '#fff' });
+    healthText = this.add.text(1000, 50, 'Health: 100', { fontSize: '64px', fill: '#fff' });
 
     // Add barriers (Houses)
     // (x,y)
