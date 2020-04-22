@@ -27,8 +27,6 @@ var spaceKey;
 
 var healthText;
 
-var sKey = this.input.keyboard.addKey('W');
-
 //// closest example https://phaser.io/examples/v3/view/games/topdownshooter/topdowncombatmechanics
 ///// sound for sneeze https://www.fesliyanstudios.com/royalty-free-sound-effects-download/people-sneezing-191
 /////// beer pic https://starecat.com/the-corona-virus-made-of-corona-extra-beer-bottles/
@@ -352,21 +350,12 @@ class SceneC extends Phaser.Scene {
 
         score = 0;
 
-        //this.input.once('pointerdown', function () {
+        this.input.once('pointerdown', function () {
 
-         //   this.scene.start('sceneD'); // start the second game state
+            this.scene.start('sceneD'); // start the second game state
 
-       // }, this);
+        }, this);
         
-    }
-
-
-    update(){
-        
-        if(sKey.isDown){
-            this.scene.start('sceneD');
-        }
-
     }
 }
 
