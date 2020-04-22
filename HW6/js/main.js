@@ -134,9 +134,6 @@ class SceneB extends Phaser.Scene {
     enemy.setVelocity(Phaser.Math.Between(-200, 200), 20);
     enemy.allowGravity = false;
     reticle = this.physics.add.sprite(800, 700, 'target');
-    //hp1 = this.add.image(-350, -250, 'target').setScrollFactor(0.5, 0.5);
-    //hp2 = this.add.image(-300, -250, 'target').setScrollFactor(0.5, 0.5);
-   // hp3 = this.add.image(-250, -250, 'target').setScrollFactor(0.5, 0.5);
 
     backgroundMusic = this.sound.add('theme');
     backgroundMusic.play();
@@ -177,9 +174,7 @@ class SceneB extends Phaser.Scene {
     enemy4.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     enemy5.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true);
     reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
-    //hp1.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    //hp2.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
-    //hp3.setOrigin(0.5, 0.5).setDisplaySize(50, 50);
+
 
     // Set that players cant go through walls
     this.physics.add.collider(player, cantWalk);
@@ -311,9 +306,6 @@ class SceneB extends Phaser.Scene {
     // Constrain position of constrainReticle
         constrainReticle(reticle);
 
-    // Make enemy fire
-       //  enemyFire(enemy, player, time, this);
-
        if (score == 5){
             this.scene.start('sceneC');
        }
@@ -398,62 +390,6 @@ function enemyHitCallback(enemyHit, bulletHit)
     }
 }
 
-/*
-
-function playerHitCallback(playerHit, bulletHit)
-{
-    // Reduce health of player
-    if (bulletHit.active === true && playerHit.active === true)
-    {
-        playerHit.health = playerHit.health - 1;
-        console.log("Player hp: ", playerHit.health);
-
-        // Kill hp sprites and kill player if health <= 0
-        if (playerHit.health == 2)
-        {
-            hp3.destroy();
-        }
-        else if (playerHit.health == 1)
-        {
-            hp2.destroy();
-        }
-        else
-        {
-            hp1.destroy();
-            // Game over state should execute here
-        }
-
-        // Destroy bullet
-        bulletHit.setActive(false).setVisible(false);
-    }
-}
-
-
-function enemyFire(enemy, player, time, gameObject)
-{
-    if (enemy.active === false)
-    {
-        return;
-    }
-
-    if ((time - enemy.lastFired) > 1000)
-    {
-        enemy.lastFired = time;
-
-        // Get bullet from bullets group
-        var bullet = enemyBullets.get().setActive(true).setVisible(true);
-
-        if (bullet)
-        {
-            bullet.fire(enemy, player);
-            // Add collider between bullet and player
-            gameObject.physics.add.collider(player, bullet, playerHitCallback);
-            gameObject.physics.add.collider(cantWalk, bullet, hitWall2);
-        }
-    }
-}
-
-*/
 // Ensures sprite speed doesnt exceed maxVelocity while update is called
 function constrainVelocity(sprite, maxVelocity)
 {

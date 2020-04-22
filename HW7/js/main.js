@@ -692,7 +692,6 @@ function enemyHitCallback(enemyHit, bulletHit)
         // Kill enemy if health <= 0
         if (enemyHit.health <= 0)
         {
-           //enemyHit.setActive(false).setVisible(false);
            enemyHit.setActive(false);
            enemyHit.setFrame(1);
            score = score + 1;
