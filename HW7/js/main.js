@@ -428,10 +428,9 @@ class SceneD extends Phaser.Scene {
     cantWalk.create(825 , 375, 'barVert')
     cantWalk.create(1000, 550, 'bar');
 
-
-
-
-
+    cantWalk.create(700, 800, 'bar');
+    //cantWalk.create(825 , 375, 'barVert')
+    //cantWalk.create(1000, 550, 'barVert');
 
 
     player = this.physics.add.sprite(800, 600, 'player_handgun');
