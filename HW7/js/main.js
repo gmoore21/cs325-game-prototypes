@@ -419,13 +419,20 @@ class SceneD extends Phaser.Scene {
     healthText = this.add.text(600, 50, 'Health: 100', { fontSize: '64px', fill: '#fff' });
 
     // Add barriers (Houses)
-    cantWalk.create(600, 800, 'bar');
-    cantWalk.create(775 , 975, 'barVert')
-    cantWalk.create(600, 1150, 'bar');
+    // (x,y)
+    cantWalk.create(300, 200, 'bar');
+    cantWalk.create(425 , 325, 'barVert')
+    cantWalk.create(300, 650, 'bar');
 
     cantWalk.create(1000, 200, 'bar');
     cantWalk.create(825 , 375, 'barVert')
     cantWalk.create(1000, 550, 'bar');
+
+
+
+
+
+
 
     player = this.physics.add.sprite(800, 600, 'player_handgun');
     enemy = this.physics.add.sprite(300, 600, 'player_handgun2');
