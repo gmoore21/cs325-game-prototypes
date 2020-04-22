@@ -22,7 +22,8 @@ var enemy5 = null;
 var hp1 = null;
 var hp2 = null;
 var hp3 = null;
-var Sneeze
+var Sneeze;
+var spaceKey;
 
 var healthText;
 
@@ -348,11 +349,20 @@ class SceneC extends Phaser.Scene {
 
         score = 0;
 
+        var sKey = scene.input.keyboard.addKey('SPACE');
+
+        if(sKey.isDown){
+            this.scene.start('sceneD');
+        }
+
+        /*
+
         this.input.once('pointerdown', function () {
 
             this.scene.start('sceneD'); // start the second game state
 
         }, this);
+        */
     }
 
 }
