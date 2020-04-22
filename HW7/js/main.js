@@ -346,6 +346,8 @@ class SceneC extends Phaser.Scene {
 
         scoreText = this.add.text(100, 300, 'You Infected: '+ score, { fontSize: '64px', fill: '#fff' });
 
+        score = 0;
+
         this.input.once('pointerdown', function () {
 
             this.scene.start('sceneD'); // start the second game state
