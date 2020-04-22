@@ -428,9 +428,9 @@ class SceneD extends Phaser.Scene {
     cantWalk.create(825 , 375, 'barVert')
     cantWalk.create(1000, 550, 'bar');
 
-    cantWalk.create(700, 800, 'bar');
-    //cantWalk.create(825 , 375, 'barVert')
-    //cantWalk.create(1000, 550, 'barVert');
+    cantWalk.create(700, 750, 'bar');
+    cantWalk.create(575 , 925, 'barVert')
+    cantWalk.create(875, 925, 'barVert');
 
 
     player = this.physics.add.sprite(800, 600, 'player_handgun');
@@ -633,7 +633,7 @@ class SceneD extends Phaser.Scene {
        if (score == 5){
             this.scene.start('sceneE');
        }
-        if(player.health == 0){
+        if(player.health <= 0){
             this.scene.start('sceneE');
         }
 
